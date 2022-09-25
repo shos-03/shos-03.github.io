@@ -1,29 +1,42 @@
-html,
 body {
     width: 100%;
-    height: 100%;
-}
-
-body {
+    margin: 0;
+    padding: 0;
     background-color: #EEEEEE;
     color: #999999;
-    font-size: xx-large;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     font-family: 'Source Code Pro', monospace;
     font-feature-settings: "palt" 1;
 }
 
+header {
+    width: 100%;
+    background-color: #EEEEEE;
+    padding-left: 1rem;
+    padding-top: 0.5rem;
+    color: #999999;
+    font-size: 1.25rem;
+    font-weight: 600;
+    position: fixed;
+    top: 0;
+    box-shadow: 0 0.1rem 0.5rem #BBBBBB;
+}
+
+article {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .coso {
-    width: 19rem;
-    border-right: 0.2rem solid #CCCCCC;
+    width: 18rem;
+    border-right: 1rem solid #DDDDDD;
     overflow: hidden;
     white-space: nowrap;
     font-size: 2rem;
     line-height: 1.4;
-    font-weight: 600;
-    animation: typing 2.5s steps(15), blink .5s step-end infinite alternate;
+    font-weight: 300;
+    animation: typing 2.5s steps(15), blink 0.51s step-end infinite alternate;
 }
 
 @keyframes typing {
