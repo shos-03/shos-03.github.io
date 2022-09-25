@@ -1,4 +1,6 @@
+html,
 body {
+    height: 100%;
     width: 100%;
     margin: 0;
     padding: 0;
@@ -22,7 +24,7 @@ header {
 }
 
 article {
-    height: 100vh;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -49,4 +51,15 @@ article {
     50% {
         border-color: transparent;
     }
+}
+
+.menu {
+    font-size: 1.25rem;
+    line-height: 2.5rem;
+    text-align: center;
+}
+
+a {
+    color: #999999;
+    text-decoration: none;
 }
