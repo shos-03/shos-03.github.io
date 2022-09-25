@@ -1,26 +1,33 @@
+:root {
+    --bg-color: #fafafa;
+    --tx-color: #666666;
+    --ax-color: rgb(70, 210, 220);
+    --rg-color: #dadada;
+}
+
 html,
 body {
     height: 100%;
     width: 100%;
     margin: 0;
     padding: 0;
-    background-color: #EEEEEE;
-    color: #999999;
+    background-color: var(--bg-color);
+    color: var(--tx-color);
     font-family: 'Source Code Pro', monospace;
     font-feature-settings: "palt" 1;
 }
 
 header {
     width: 100%;
-    background-color: #EEEEEE;
+    background-color: var(--bg-color);
     padding-left: 1rem;
     padding-top: 0.5rem;
-    color: #999999;
+    color: var(--tx-color);
     font-size: 1.25rem;
     font-weight: 600;
     position: fixed;
     top: 0;
-    box-shadow: 0 0.1rem 0.5rem #BBBBBB;
+    box-shadow: 0 0.1rem 0.5rem var(--rg-color);
 }
 
 article {
@@ -28,11 +35,14 @@ article {
     display: flex;
     justify-content: center;
     align-items: center;
+    border-width: 0 0.25rem;
+    border-style: solid;
+    border-color: var(--ax-color);
 }
 
 .coso {
     width: 18rem;
-    border-right: 1rem solid #DDDDDD;
+    border-right: 1rem solid var(--rg-color);
     overflow: hidden;
     white-space: nowrap;
     font-size: 2rem;
@@ -43,6 +53,7 @@ article {
 
 @keyframes typing {
     from {
+
         width: 0;
     }
 }
@@ -60,6 +71,10 @@ article {
 }
 
 a {
-    color: #999999;
+    color: var(--tx-color);
     text-decoration: none;
+}
+
+a:hover {
+    color: var(--ax-color);
 }
