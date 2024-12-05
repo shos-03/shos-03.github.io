@@ -1,34 +1,73 @@
-body {
+html {
     background-color: #fff;
-}
-
-h1 {
-    color: #33A6BB;
-    text-align: center;
-    font-family: "futura-pt";
-    font-size: 36px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-}
-
-p {
+    font-family: "futura-pt", "Hiragino Sans", sans-serif;
     color: #333;
-    text-align: center;
-    font-family: sans-serif;
-    font-size: 14px;
+    font-size: 16px;
+    text-align: start;
     font-style: normal;
-    font-weight: 400;
+    font-weight: 300;
     line-height: 175%;
 }
 
-.icon img {
-    width: 165px;
-    height: 165px;
-    object-fit: cover;
+h1 {
+    padding-top: 30px;
+    padding-bottom: 15px;
+    color: #33A6BB;
+    text-align: center;
+    font-size: 36px;
+    font-weight: 400;
+}
+
+p {
+    color: #999;
+}
+
+a {
+    text-decoration: none;
+    border-bottom: dashed 1px #999;
+}
+
+a:visited {
+    color: #999;
+}
+
+a:hover {
+    color: #33A6BB;
+}
+
+h3 {
+    color: #333;
+    text-align: start;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 50%;
+}
+
+.icon-container {
+    display: flex;
+    /* Flexboxを有効化 */
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    /* アイコンとテキストの間に余白を追加 */
+}
+
+.icon {
+    width: 25%;
+    max-width: 165px;
+    aspect-ratio: 1 / 1;
     flex-shrink: 0;
-    border-radius: 165px;
-    border: 2px solid #33A6BB;
+    /* サイズが縮まないようにする */
+    overflow: hidden;
+    border-radius: 15%;
+}
+
+.icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* 画像を1:1で切り抜き */
 }
 
 .grid-container {
@@ -52,6 +91,18 @@ p {
     .grid-container {
         grid-template-columns: repeat(2, 1fr);
         /* 2列に切り替え */
+    }
+
+    html {
+        font-size: 14px;
+    }
+
+    h1 {
+        font-size: 28px;
+    }
+
+    h3 {
+        font-size: 21px;
     }
 }
 
@@ -105,8 +156,6 @@ p {
 
 .copy-right {
     text-align: center;
-    font-family: "futura-pt";
-    font-size: 14px;
-    color: #aaa;
+    color: #999;
     margin-top: 30px;
 }
