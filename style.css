@@ -6,7 +6,7 @@ html {
     text-align: start;
     font-style: normal;
     font-weight: 300;
-    line-height: 175%;
+    line-height: 167%;
 }
 
 h1 {
@@ -15,7 +15,6 @@ h1 {
     color: #33A6BB;
     text-align: center;
     font-size: 36px;
-    font-weight: 400;
 }
 
 p {
@@ -24,6 +23,7 @@ p {
 
 a {
     text-decoration: none;
+    color: #999;
     border-bottom: dashed 1px #999;
 }
 
@@ -39,7 +39,6 @@ h3 {
     color: #333;
     text-align: start;
     font-size: 24px;
-    font-style: normal;
     font-weight: 500;
     line-height: 50%;
 }
@@ -54,7 +53,7 @@ h3 {
 }
 
 .icon {
-    width: 25%;
+    width: 33%;
     max-width: 165px;
     aspect-ratio: 1 / 1;
     flex-shrink: 0;
@@ -94,15 +93,15 @@ h3 {
     }
 
     html {
-        font-size: 14px;
+        font-size: 13px;
     }
 
     h1 {
-        font-size: 28px;
+        font-size: 26px;
     }
 
     h3 {
-        font-size: 21px;
+        font-size: 20px;
     }
 }
 
@@ -158,4 +157,9 @@ h3 {
     text-align: center;
     color: #999;
     margin-top: 30px;
+}
+
+span.aks {
+    /* 改行位置制御*/
+    display: inline-block;
 }
