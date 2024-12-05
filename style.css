@@ -1,94 +1,107 @@
-:root {
-    --bg-color: #fafafa;
-    --tx-color: #666666;
-    --ax-color: rgb(70, 210, 220);
-    --rg-color: #dadada;
-}
-
-html,
 body {
-    font-size: 16px;
-    -webkit-text-size-adjust: 100%;
-    text-size-adjust: 100%;
-    height: 100%;
-    width: 100%;
-    margin: 0px;
-    padding: 0px;
-    background-color: var(--bg-color);
-    color: var(--tx-color);
-    font-family: 'Source Code Pro', monospace;
-    font-feature-settings: "palt" 1;
+    margin: 100px, 200px, 50px, 200px;
+    background-color: #fff;
 }
 
-.page {
-    height: auto;
-    min-height: 100%;
-}
-
-header {
-    background-color: var(--bg-color);
-    padding: 0.25rem 1rem;
-    color: var(--tx-color);
-    font-size: 1.25rem;
-    font-weight: 600;
-    top: 0;
-    box-shadow: 0 0.1rem 0.5rem var(--rg-color);
-}
-
-article {
-    padding: calc(50vh - 4rem) 2rem;
-}
-
-.center {
-    height: calc(100% - 5rem);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.coso {
-    width: 18rem;
-    border-right: 1rem solid var(--rg-color);
-    overflow: hidden;
-    white-space: nowrap;
-    font-size: 2rem;
-    line-height: 1.4;
-    font-weight: 300;
-    animation: typing 2.5s steps(15), blink 0.51s step-end infinite alternate;
-}
-
-@keyframes typing {
-    from {
-        width: 0;
-    }
-}
-
-@keyframes blink {
-    50% {
-        border-color: transparent;
-    }
-}
-
-.menu {
-    line-height: 2.5rem;
+h1 {
+    color: #33A6BB;
     text-align: center;
-}
-
-h2 {
-    font-size: 4rem;
-    font-weight: 600;
+    font-family: "Futura PT";
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
 }
 
 p {
-    font-size: 1.25rem;
-    font-weight: 300;
+    color: #333;
+    text-align: center;
+    font-family: sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 175%;
 }
 
-a {
-    color: var(--tx-color);
-    text-decoration: none;
+.icon img {
+    width: 165px;
+    height: 165px;
+    object-fit: cover;
+    flex-shrink: 0;
+    border-radius: 165px;
+    border: 2px solid #33A6BB;
 }
 
-a:hover {
-    color: var(--ax-color);
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    /* 横3列 */
+    gap: 5px;
+    /* グリッド間の間隔 */
+    width: 100%;
+    max-width: 1200px;
+    box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+    .grid-container {
+        grid-template-columns: repeat(2, 1fr);
+        /* 2列に切り替え */
+    }
+}
+
+.image-container {
+    position: relative;
+    width: 100%;
+    padding-top: 66.67%;
+    /* 縦横比を3:2に保つ */
+    overflow: hidden;
+}
+
+.image-container img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* 画像を領域内でカバー */
+}
+
+.overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 30px;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* 半透明の黒背景 */
+    opacity: 0;
+    /* 初期状態では非表示 */
+    transition: opacity 0.3s ease-in-out;
+    /* フェードイン/アウト効果 */
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+.overlay .caption {
+    padding-right: 10px;
+    font-family: "Futura PT";
+    color: #fff;
+    font-size: 14px;
+    line-height: 100%;
+}
+
+.image-container:hover .overlay {
+    opacity: 1;
+    /* ホバー時に表示 */
+}
+
+.copy-right {
+    text-align: center;
+    font-family: "Futura PT";
+    font-size: 14px;
+    color: #aaa;
+    margin-top: 30px;
 }
