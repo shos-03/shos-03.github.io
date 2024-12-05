@@ -1,12 +1,11 @@
 body {
-    margin: 100px, 200px, 50px, 200px;
     background-color: #fff;
 }
 
 h1 {
     color: #33A6BB;
     text-align: center;
-    font-family: "Futura PT";
+    font-family: "futura-pt";
     font-size: 36px;
     font-style: normal;
     font-weight: 400;
@@ -41,6 +40,12 @@ p {
     width: 100%;
     max-width: 1200px;
     box-sizing: border-box;
+    margin: 0 auto;
+    /* 水平方向に中央揃え */
+    justify-content: center;
+    /* グリッドアイテムを水平方向に中央揃え */
+    align-content: center;
+    /* グリッドアイテムを垂直方向に中央揃え */
 }
 
 @media (max-width: 768px) {
@@ -87,7 +92,7 @@ p {
 
 .overlay .caption {
     padding-right: 10px;
-    font-family: "Futura PT";
+    font-family: "futura-pt";
     color: #fff;
     font-size: 14px;
     line-height: 100%;
@@ -100,7 +105,7 @@ p {
 
 .copy-right {
     text-align: center;
-    font-family: "Futura PT";
+    font-family: "futura-pt";
     font-size: 14px;
     color: #aaa;
     margin-top: 30px;
