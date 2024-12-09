@@ -10,3 +10,14 @@ function filterPhotosByYear() {
         }
     });
 }
+document.addEventListener("DOMContentLoaded", () => {
+    // グリッドコンテナとその子要素（画像コンテナ）を取得
+    const gridContainer = document.querySelector(".grid-container");
+    const imageContainers = Array.from(gridContainer.children);
+
+    // 子要素をランダムにシャッフルする
+    const shuffledContainers = imageContainers.sort(() => Math.random() - 0.5);
+
+    // シャッフルされた要素をグリッドコンテナに再追加
+    shuffledContainers.forEach(container => gridContainer.appendChild(container));
+});
