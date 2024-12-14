@@ -1,0 +1,1840 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="style.css">
+    <title>世界経験地図</title>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+</head>
+
+<body>
+    <h1>世界経験地図</h1>
+
+    <div id="map" style="height: 500px;">
+        <!-- 世界地図を表示するための要素 -->
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>国名</th>
+                <th>居住</th>
+                <th>宿泊</th>
+                <th>訪問</th>
+                <th>接地</th>
+                <th>通過</th>
+                <th>未踏</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Afghanistan</td>
+                <td><input type="radio" name="Afghanistan" value="Lived"></td>
+                <td><input type="radio" name="Afghanistan" value="Stayed"></td>
+                <td><input type="radio" name="Afghanistan" value="Visited"></td>
+                <td><input type="radio" name="Afghanistan" value="Landed"></td>
+                <td><input type="radio" name="Afghanistan" value="Passed"></td>
+                <td><input type="radio" name="Afghanistan" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Angola</td>
+                <td><input type="radio" name="Angola" value="Lived"></td>
+                <td><input type="radio" name="Angola" value="Stayed"></td>
+                <td><input type="radio" name="Angola" value="Visited"></td>
+                <td><input type="radio" name="Angola" value="Landed"></td>
+                <td><input type="radio" name="Angola" value="Passed"></td>
+                <td><input type="radio" name="Angola" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Albania</td>
+                <td><input type="radio" name="Albania" value="Lived"></td>
+                <td><input type="radio" name="Albania" value="Stayed"></td>
+                <td><input type="radio" name="Albania" value="Visited"></td>
+                <td><input type="radio" name="Albania" value="Landed"></td>
+                <td><input type="radio" name="Albania" value="Passed"></td>
+                <td><input type="radio" name="Albania" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>United Arab Emirates</td>
+                <td><input type="radio" name="United Arab Emirates" value="Lived"></td>
+                <td><input type="radio" name="United Arab Emirates" value="Stayed"></td>
+                <td><input type="radio" name="United Arab Emirates" value="Visited"></td>
+                <td><input type="radio" name="United Arab Emirates" value="Landed"></td>
+                <td><input type="radio" name="United Arab Emirates" value="Passed"></td>
+                <td><input type="radio" name="United Arab Emirates" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Argentina</td>
+                <td><input type="radio" name="Argentina" value="Lived"></td>
+                <td><input type="radio" name="Argentina" value="Stayed"></td>
+                <td><input type="radio" name="Argentina" value="Visited"></td>
+                <td><input type="radio" name="Argentina" value="Landed"></td>
+                <td><input type="radio" name="Argentina" value="Passed"></td>
+                <td><input type="radio" name="Argentina" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Armenia</td>
+                <td><input type="radio" name="Armenia" value="Lived"></td>
+                <td><input type="radio" name="Armenia" value="Stayed"></td>
+                <td><input type="radio" name="Armenia" value="Visited"></td>
+                <td><input type="radio" name="Armenia" value="Landed"></td>
+                <td><input type="radio" name="Armenia" value="Passed"></td>
+                <td><input type="radio" name="Armenia" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Antarctica</td>
+                <td><input type="radio" name="Antarctica" value="Lived"></td>
+                <td><input type="radio" name="Antarctica" value="Stayed"></td>
+                <td><input type="radio" name="Antarctica" value="Visited"></td>
+                <td><input type="radio" name="Antarctica" value="Landed"></td>
+                <td><input type="radio" name="Antarctica" value="Passed"></td>
+                <td><input type="radio" name="Antarctica" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>French Southern and Antarctic Lands</td>
+                <td><input type="radio" name="French Southern and Antarctic Lands" value="Lived"></td>
+                <td><input type="radio" name="French Southern and Antarctic Lands" value="Stayed"></td>
+                <td><input type="radio" name="French Southern and Antarctic Lands" value="Visited"></td>
+                <td><input type="radio" name="French Southern and Antarctic Lands" value="Landed"></td>
+                <td><input type="radio" name="French Southern and Antarctic Lands" value="Passed"></td>
+                <td><input type="radio" name="French Southern and Antarctic Lands" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Australia</td>
+                <td><input type="radio" name="Australia" value="Lived"></td>
+                <td><input type="radio" name="Australia" value="Stayed"></td>
+                <td><input type="radio" name="Australia" value="Visited"></td>
+                <td><input type="radio" name="Australia" value="Landed"></td>
+                <td><input type="radio" name="Australia" value="Passed"></td>
+                <td><input type="radio" name="Australia" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Austria</td>
+                <td><input type="radio" name="Austria" value="Lived"></td>
+                <td><input type="radio" name="Austria" value="Stayed"></td>
+                <td><input type="radio" name="Austria" value="Visited"></td>
+                <td><input type="radio" name="Austria" value="Landed"></td>
+                <td><input type="radio" name="Austria" value="Passed"></td>
+                <td><input type="radio" name="Austria" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Azerbaijan</td>
+                <td><input type="radio" name="Azerbaijan" value="Lived"></td>
+                <td><input type="radio" name="Azerbaijan" value="Stayed"></td>
+                <td><input type="radio" name="Azerbaijan" value="Visited"></td>
+                <td><input type="radio" name="Azerbaijan" value="Landed"></td>
+                <td><input type="radio" name="Azerbaijan" value="Passed"></td>
+                <td><input type="radio" name="Azerbaijan" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Burundi</td>
+                <td><input type="radio" name="Burundi" value="Lived"></td>
+                <td><input type="radio" name="Burundi" value="Stayed"></td>
+                <td><input type="radio" name="Burundi" value="Visited"></td>
+                <td><input type="radio" name="Burundi" value="Landed"></td>
+                <td><input type="radio" name="Burundi" value="Passed"></td>
+                <td><input type="radio" name="Burundi" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Belgium</td>
+                <td><input type="radio" name="Belgium" value="Lived"></td>
+                <td><input type="radio" name="Belgium" value="Stayed"></td>
+                <td><input type="radio" name="Belgium" value="Visited"></td>
+                <td><input type="radio" name="Belgium" value="Landed"></td>
+                <td><input type="radio" name="Belgium" value="Passed"></td>
+                <td><input type="radio" name="Belgium" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Benin</td>
+                <td><input type="radio" name="Benin" value="Lived"></td>
+                <td><input type="radio" name="Benin" value="Stayed"></td>
+                <td><input type="radio" name="Benin" value="Visited"></td>
+                <td><input type="radio" name="Benin" value="Landed"></td>
+                <td><input type="radio" name="Benin" value="Passed"></td>
+                <td><input type="radio" name="Benin" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Burkina Faso</td>
+                <td><input type="radio" name="Burkina Faso" value="Lived"></td>
+                <td><input type="radio" name="Burkina Faso" value="Stayed"></td>
+                <td><input type="radio" name="Burkina Faso" value="Visited"></td>
+                <td><input type="radio" name="Burkina Faso" value="Landed"></td>
+                <td><input type="radio" name="Burkina Faso" value="Passed"></td>
+                <td><input type="radio" name="Burkina Faso" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Bangladesh</td>
+                <td><input type="radio" name="Bangladesh" value="Lived"></td>
+                <td><input type="radio" name="Bangladesh" value="Stayed"></td>
+                <td><input type="radio" name="Bangladesh" value="Visited"></td>
+                <td><input type="radio" name="Bangladesh" value="Landed"></td>
+                <td><input type="radio" name="Bangladesh" value="Passed"></td>
+                <td><input type="radio" name="Bangladesh" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Bulgaria</td>
+                <td><input type="radio" name="Bulgaria" value="Lived"></td>
+                <td><input type="radio" name="Bulgaria" value="Stayed"></td>
+                <td><input type="radio" name="Bulgaria" value="Visited"></td>
+                <td><input type="radio" name="Bulgaria" value="Landed"></td>
+                <td><input type="radio" name="Bulgaria" value="Passed"></td>
+                <td><input type="radio" name="Bulgaria" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>The Bahamas</td>
+                <td><input type="radio" name="The Bahamas" value="Lived"></td>
+                <td><input type="radio" name="The Bahamas" value="Stayed"></td>
+                <td><input type="radio" name="The Bahamas" value="Visited"></td>
+                <td><input type="radio" name="The Bahamas" value="Landed"></td>
+                <td><input type="radio" name="The Bahamas" value="Passed"></td>
+                <td><input type="radio" name="The Bahamas" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Bosnia and Herzegovina</td>
+                <td><input type="radio" name="Bosnia and Herzegovina" value="Lived"></td>
+                <td><input type="radio" name="Bosnia and Herzegovina" value="Stayed"></td>
+                <td><input type="radio" name="Bosnia and Herzegovina" value="Visited"></td>
+                <td><input type="radio" name="Bosnia and Herzegovina" value="Landed"></td>
+                <td><input type="radio" name="Bosnia and Herzegovina" value="Passed"></td>
+                <td><input type="radio" name="Bosnia and Herzegovina" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Belarus</td>
+                <td><input type="radio" name="Belarus" value="Lived"></td>
+                <td><input type="radio" name="Belarus" value="Stayed"></td>
+                <td><input type="radio" name="Belarus" value="Visited"></td>
+                <td><input type="radio" name="Belarus" value="Landed"></td>
+                <td><input type="radio" name="Belarus" value="Passed"></td>
+                <td><input type="radio" name="Belarus" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Belize</td>
+                <td><input type="radio" name="Belize" value="Lived"></td>
+                <td><input type="radio" name="Belize" value="Stayed"></td>
+                <td><input type="radio" name="Belize" value="Visited"></td>
+                <td><input type="radio" name="Belize" value="Landed"></td>
+                <td><input type="radio" name="Belize" value="Passed"></td>
+                <td><input type="radio" name="Belize" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Bermuda</td>
+                <td><input type="radio" name="Bermuda" value="Lived"></td>
+                <td><input type="radio" name="Bermuda" value="Stayed"></td>
+                <td><input type="radio" name="Bermuda" value="Visited"></td>
+                <td><input type="radio" name="Bermuda" value="Landed"></td>
+                <td><input type="radio" name="Bermuda" value="Passed"></td>
+                <td><input type="radio" name="Bermuda" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Bolivia</td>
+                <td><input type="radio" name="Bolivia" value="Lived"></td>
+                <td><input type="radio" name="Bolivia" value="Stayed"></td>
+                <td><input type="radio" name="Bolivia" value="Visited"></td>
+                <td><input type="radio" name="Bolivia" value="Landed"></td>
+                <td><input type="radio" name="Bolivia" value="Passed"></td>
+                <td><input type="radio" name="Bolivia" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Brazil</td>
+                <td><input type="radio" name="Brazil" value="Lived"></td>
+                <td><input type="radio" name="Brazil" value="Stayed"></td>
+                <td><input type="radio" name="Brazil" value="Visited"></td>
+                <td><input type="radio" name="Brazil" value="Landed"></td>
+                <td><input type="radio" name="Brazil" value="Passed"></td>
+                <td><input type="radio" name="Brazil" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Brunei</td>
+                <td><input type="radio" name="Brunei" value="Lived"></td>
+                <td><input type="radio" name="Brunei" value="Stayed"></td>
+                <td><input type="radio" name="Brunei" value="Visited"></td>
+                <td><input type="radio" name="Brunei" value="Landed"></td>
+                <td><input type="radio" name="Brunei" value="Passed"></td>
+                <td><input type="radio" name="Brunei" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Bhutan</td>
+                <td><input type="radio" name="Bhutan" value="Lived"></td>
+                <td><input type="radio" name="Bhutan" value="Stayed"></td>
+                <td><input type="radio" name="Bhutan" value="Visited"></td>
+                <td><input type="radio" name="Bhutan" value="Landed"></td>
+                <td><input type="radio" name="Bhutan" value="Passed"></td>
+                <td><input type="radio" name="Bhutan" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Botswana</td>
+                <td><input type="radio" name="Botswana" value="Lived"></td>
+                <td><input type="radio" name="Botswana" value="Stayed"></td>
+                <td><input type="radio" name="Botswana" value="Visited"></td>
+                <td><input type="radio" name="Botswana" value="Landed"></td>
+                <td><input type="radio" name="Botswana" value="Passed"></td>
+                <td><input type="radio" name="Botswana" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Central African Republic</td>
+                <td><input type="radio" name="Central African Republic" value="Lived"></td>
+                <td><input type="radio" name="Central African Republic" value="Stayed"></td>
+                <td><input type="radio" name="Central African Republic" value="Visited"></td>
+                <td><input type="radio" name="Central African Republic" value="Landed"></td>
+                <td><input type="radio" name="Central African Republic" value="Passed"></td>
+                <td><input type="radio" name="Central African Republic" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Canada</td>
+                <td><input type="radio" name="Canada" value="Lived"></td>
+                <td><input type="radio" name="Canada" value="Stayed"></td>
+                <td><input type="radio" name="Canada" value="Visited"></td>
+                <td><input type="radio" name="Canada" value="Landed"></td>
+                <td><input type="radio" name="Canada" value="Passed"></td>
+                <td><input type="radio" name="Canada" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Switzerland</td>
+                <td><input type="radio" name="Switzerland" value="Lived"></td>
+                <td><input type="radio" name="Switzerland" value="Stayed"></td>
+                <td><input type="radio" name="Switzerland" value="Visited"></td>
+                <td><input type="radio" name="Switzerland" value="Landed"></td>
+                <td><input type="radio" name="Switzerland" value="Passed"></td>
+                <td><input type="radio" name="Switzerland" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Chile</td>
+                <td><input type="radio" name="Chile" value="Lived"></td>
+                <td><input type="radio" name="Chile" value="Stayed"></td>
+                <td><input type="radio" name="Chile" value="Visited"></td>
+                <td><input type="radio" name="Chile" value="Landed"></td>
+                <td><input type="radio" name="Chile" value="Passed"></td>
+                <td><input type="radio" name="Chile" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>China</td>
+                <td><input type="radio" name="China" value="Lived"></td>
+                <td><input type="radio" name="China" value="Stayed"></td>
+                <td><input type="radio" name="China" value="Visited"></td>
+                <td><input type="radio" name="China" value="Landed"></td>
+                <td><input type="radio" name="China" value="Passed"></td>
+                <td><input type="radio" name="China" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Ivory Coast</td>
+                <td><input type="radio" name="Ivory Coast" value="Lived"></td>
+                <td><input type="radio" name="Ivory Coast" value="Stayed"></td>
+                <td><input type="radio" name="Ivory Coast" value="Visited"></td>
+                <td><input type="radio" name="Ivory Coast" value="Landed"></td>
+                <td><input type="radio" name="Ivory Coast" value="Passed"></td>
+                <td><input type="radio" name="Ivory Coast" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Cameroon</td>
+                <td><input type="radio" name="Cameroon" value="Lived"></td>
+                <td><input type="radio" name="Cameroon" value="Stayed"></td>
+                <td><input type="radio" name="Cameroon" value="Visited"></td>
+                <td><input type="radio" name="Cameroon" value="Landed"></td>
+                <td><input type="radio" name="Cameroon" value="Passed"></td>
+                <td><input type="radio" name="Cameroon" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Democratic Republic of the Congo</td>
+                <td><input type="radio" name="Democratic Republic of the Congo" value="Lived"></td>
+                <td><input type="radio" name="Democratic Republic of the Congo" value="Stayed"></td>
+                <td><input type="radio" name="Democratic Republic of the Congo" value="Visited"></td>
+                <td><input type="radio" name="Democratic Republic of the Congo" value="Landed"></td>
+                <td><input type="radio" name="Democratic Republic of the Congo" value="Passed"></td>
+                <td><input type="radio" name="Democratic Republic of the Congo" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Republic of the Congo</td>
+                <td><input type="radio" name="Republic of the Congo" value="Lived"></td>
+                <td><input type="radio" name="Republic of the Congo" value="Stayed"></td>
+                <td><input type="radio" name="Republic of the Congo" value="Visited"></td>
+                <td><input type="radio" name="Republic of the Congo" value="Landed"></td>
+                <td><input type="radio" name="Republic of the Congo" value="Passed"></td>
+                <td><input type="radio" name="Republic of the Congo" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Colombia</td>
+                <td><input type="radio" name="Colombia" value="Lived"></td>
+                <td><input type="radio" name="Colombia" value="Stayed"></td>
+                <td><input type="radio" name="Colombia" value="Visited"></td>
+                <td><input type="radio" name="Colombia" value="Landed"></td>
+                <td><input type="radio" name="Colombia" value="Passed"></td>
+                <td><input type="radio" name="Colombia" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Costa Rica</td>
+                <td><input type="radio" name="Costa Rica" value="Lived"></td>
+                <td><input type="radio" name="Costa Rica" value="Stayed"></td>
+                <td><input type="radio" name="Costa Rica" value="Visited"></td>
+                <td><input type="radio" name="Costa Rica" value="Landed"></td>
+                <td><input type="radio" name="Costa Rica" value="Passed"></td>
+                <td><input type="radio" name="Costa Rica" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Cuba</td>
+                <td><input type="radio" name="Cuba" value="Lived"></td>
+                <td><input type="radio" name="Cuba" value="Stayed"></td>
+                <td><input type="radio" name="Cuba" value="Visited"></td>
+                <td><input type="radio" name="Cuba" value="Landed"></td>
+                <td><input type="radio" name="Cuba" value="Passed"></td>
+                <td><input type="radio" name="Cuba" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Northern Cyprus</td>
+                <td><input type="radio" name="Northern Cyprus" value="Lived"></td>
+                <td><input type="radio" name="Northern Cyprus" value="Stayed"></td>
+                <td><input type="radio" name="Northern Cyprus" value="Visited"></td>
+                <td><input type="radio" name="Northern Cyprus" value="Landed"></td>
+                <td><input type="radio" name="Northern Cyprus" value="Passed"></td>
+                <td><input type="radio" name="Northern Cyprus" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Cyprus</td>
+                <td><input type="radio" name="Cyprus" value="Lived"></td>
+                <td><input type="radio" name="Cyprus" value="Stayed"></td>
+                <td><input type="radio" name="Cyprus" value="Visited"></td>
+                <td><input type="radio" name="Cyprus" value="Landed"></td>
+                <td><input type="radio" name="Cyprus" value="Passed"></td>
+                <td><input type="radio" name="Cyprus" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Czech Republic</td>
+                <td><input type="radio" name="Czech Republic" value="Lived"></td>
+                <td><input type="radio" name="Czech Republic" value="Stayed"></td>
+                <td><input type="radio" name="Czech Republic" value="Visited"></td>
+                <td><input type="radio" name="Czech Republic" value="Landed"></td>
+                <td><input type="radio" name="Czech Republic" value="Passed"></td>
+                <td><input type="radio" name="Czech Republic" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Germany</td>
+                <td><input type="radio" name="Germany" value="Lived"></td>
+                <td><input type="radio" name="Germany" value="Stayed"></td>
+                <td><input type="radio" name="Germany" value="Visited"></td>
+                <td><input type="radio" name="Germany" value="Landed"></td>
+                <td><input type="radio" name="Germany" value="Passed"></td>
+                <td><input type="radio" name="Germany" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Djibouti</td>
+                <td><input type="radio" name="Djibouti" value="Lived"></td>
+                <td><input type="radio" name="Djibouti" value="Stayed"></td>
+                <td><input type="radio" name="Djibouti" value="Visited"></td>
+                <td><input type="radio" name="Djibouti" value="Landed"></td>
+                <td><input type="radio" name="Djibouti" value="Passed"></td>
+                <td><input type="radio" name="Djibouti" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Denmark</td>
+                <td><input type="radio" name="Denmark" value="Lived"></td>
+                <td><input type="radio" name="Denmark" value="Stayed"></td>
+                <td><input type="radio" name="Denmark" value="Visited"></td>
+                <td><input type="radio" name="Denmark" value="Landed"></td>
+                <td><input type="radio" name="Denmark" value="Passed"></td>
+                <td><input type="radio" name="Denmark" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Dominican Republic</td>
+                <td><input type="radio" name="Dominican Republic" value="Lived"></td>
+                <td><input type="radio" name="Dominican Republic" value="Stayed"></td>
+                <td><input type="radio" name="Dominican Republic" value="Visited"></td>
+                <td><input type="radio" name="Dominican Republic" value="Landed"></td>
+                <td><input type="radio" name="Dominican Republic" value="Passed"></td>
+                <td><input type="radio" name="Dominican Republic" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Algeria</td>
+                <td><input type="radio" name="Algeria" value="Lived"></td>
+                <td><input type="radio" name="Algeria" value="Stayed"></td>
+                <td><input type="radio" name="Algeria" value="Visited"></td>
+                <td><input type="radio" name="Algeria" value="Landed"></td>
+                <td><input type="radio" name="Algeria" value="Passed"></td>
+                <td><input type="radio" name="Algeria" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Ecuador</td>
+                <td><input type="radio" name="Ecuador" value="Lived"></td>
+                <td><input type="radio" name="Ecuador" value="Stayed"></td>
+                <td><input type="radio" name="Ecuador" value="Visited"></td>
+                <td><input type="radio" name="Ecuador" value="Landed"></td>
+                <td><input type="radio" name="Ecuador" value="Passed"></td>
+                <td><input type="radio" name="Ecuador" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Egypt</td>
+                <td><input type="radio" name="Egypt" value="Lived"></td>
+                <td><input type="radio" name="Egypt" value="Stayed"></td>
+                <td><input type="radio" name="Egypt" value="Visited"></td>
+                <td><input type="radio" name="Egypt" value="Landed"></td>
+                <td><input type="radio" name="Egypt" value="Passed"></td>
+                <td><input type="radio" name="Egypt" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Eritrea</td>
+                <td><input type="radio" name="Eritrea" value="Lived"></td>
+                <td><input type="radio" name="Eritrea" value="Stayed"></td>
+                <td><input type="radio" name="Eritrea" value="Visited"></td>
+                <td><input type="radio" name="Eritrea" value="Landed"></td>
+                <td><input type="radio" name="Eritrea" value="Passed"></td>
+                <td><input type="radio" name="Eritrea" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Spain</td>
+                <td><input type="radio" name="Spain" value="Lived"></td>
+                <td><input type="radio" name="Spain" value="Stayed"></td>
+                <td><input type="radio" name="Spain" value="Visited"></td>
+                <td><input type="radio" name="Spain" value="Landed"></td>
+                <td><input type="radio" name="Spain" value="Passed"></td>
+                <td><input type="radio" name="Spain" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Estonia</td>
+                <td><input type="radio" name="Estonia" value="Lived"></td>
+                <td><input type="radio" name="Estonia" value="Stayed"></td>
+                <td><input type="radio" name="Estonia" value="Visited"></td>
+                <td><input type="radio" name="Estonia" value="Landed"></td>
+                <td><input type="radio" name="Estonia" value="Passed"></td>
+                <td><input type="radio" name="Estonia" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Ethiopia</td>
+                <td><input type="radio" name="Ethiopia" value="Lived"></td>
+                <td><input type="radio" name="Ethiopia" value="Stayed"></td>
+                <td><input type="radio" name="Ethiopia" value="Visited"></td>
+                <td><input type="radio" name="Ethiopia" value="Landed"></td>
+                <td><input type="radio" name="Ethiopia" value="Passed"></td>
+                <td><input type="radio" name="Ethiopia" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Finland</td>
+                <td><input type="radio" name="Finland" value="Lived"></td>
+                <td><input type="radio" name="Finland" value="Stayed"></td>
+                <td><input type="radio" name="Finland" value="Visited"></td>
+                <td><input type="radio" name="Finland" value="Landed"></td>
+                <td><input type="radio" name="Finland" value="Passed"></td>
+                <td><input type="radio" name="Finland" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Fiji</td>
+                <td><input type="radio" name="Fiji" value="Lived"></td>
+                <td><input type="radio" name="Fiji" value="Stayed"></td>
+                <td><input type="radio" name="Fiji" value="Visited"></td>
+                <td><input type="radio" name="Fiji" value="Landed"></td>
+                <td><input type="radio" name="Fiji" value="Passed"></td>
+                <td><input type="radio" name="Fiji" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Falkland Islands</td>
+                <td><input type="radio" name="Falkland Islands" value="Lived"></td>
+                <td><input type="radio" name="Falkland Islands" value="Stayed"></td>
+                <td><input type="radio" name="Falkland Islands" value="Visited"></td>
+                <td><input type="radio" name="Falkland Islands" value="Landed"></td>
+                <td><input type="radio" name="Falkland Islands" value="Passed"></td>
+                <td><input type="radio" name="Falkland Islands" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>France</td>
+                <td><input type="radio" name="France" value="Lived"></td>
+                <td><input type="radio" name="France" value="Stayed"></td>
+                <td><input type="radio" name="France" value="Visited"></td>
+                <td><input type="radio" name="France" value="Landed"></td>
+                <td><input type="radio" name="France" value="Passed"></td>
+                <td><input type="radio" name="France" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Gabon</td>
+                <td><input type="radio" name="Gabon" value="Lived"></td>
+                <td><input type="radio" name="Gabon" value="Stayed"></td>
+                <td><input type="radio" name="Gabon" value="Visited"></td>
+                <td><input type="radio" name="Gabon" value="Landed"></td>
+                <td><input type="radio" name="Gabon" value="Passed"></td>
+                <td><input type="radio" name="Gabon" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>United Kingdom</td>
+                <td><input type="radio" name="United Kingdom" value="Lived"></td>
+                <td><input type="radio" name="United Kingdom" value="Stayed"></td>
+                <td><input type="radio" name="United Kingdom" value="Visited"></td>
+                <td><input type="radio" name="United Kingdom" value="Landed"></td>
+                <td><input type="radio" name="United Kingdom" value="Passed"></td>
+                <td><input type="radio" name="United Kingdom" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Georgia</td>
+                <td><input type="radio" name="Georgia" value="Lived"></td>
+                <td><input type="radio" name="Georgia" value="Stayed"></td>
+                <td><input type="radio" name="Georgia" value="Visited"></td>
+                <td><input type="radio" name="Georgia" value="Landed"></td>
+                <td><input type="radio" name="Georgia" value="Passed"></td>
+                <td><input type="radio" name="Georgia" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Ghana</td>
+                <td><input type="radio" name="Ghana" value="Lived"></td>
+                <td><input type="radio" name="Ghana" value="Stayed"></td>
+                <td><input type="radio" name="Ghana" value="Visited"></td>
+                <td><input type="radio" name="Ghana" value="Landed"></td>
+                <td><input type="radio" name="Ghana" value="Passed"></td>
+                <td><input type="radio" name="Ghana" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Guinea</td>
+                <td><input type="radio" name="Guinea" value="Lived"></td>
+                <td><input type="radio" name="Guinea" value="Stayed"></td>
+                <td><input type="radio" name="Guinea" value="Visited"></td>
+                <td><input type="radio" name="Guinea" value="Landed"></td>
+                <td><input type="radio" name="Guinea" value="Passed"></td>
+                <td><input type="radio" name="Guinea" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Gambia</td>
+                <td><input type="radio" name="Gambia" value="Lived"></td>
+                <td><input type="radio" name="Gambia" value="Stayed"></td>
+                <td><input type="radio" name="Gambia" value="Visited"></td>
+                <td><input type="radio" name="Gambia" value="Landed"></td>
+                <td><input type="radio" name="Gambia" value="Passed"></td>
+                <td><input type="radio" name="Gambia" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Guinea Bissau</td>
+                <td><input type="radio" name="Guinea Bissau" value="Lived"></td>
+                <td><input type="radio" name="Guinea Bissau" value="Stayed"></td>
+                <td><input type="radio" name="Guinea Bissau" value="Visited"></td>
+                <td><input type="radio" name="Guinea Bissau" value="Landed"></td>
+                <td><input type="radio" name="Guinea Bissau" value="Passed"></td>
+                <td><input type="radio" name="Guinea Bissau" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Equatorial Guinea</td>
+                <td><input type="radio" name="Equatorial Guinea" value="Lived"></td>
+                <td><input type="radio" name="Equatorial Guinea" value="Stayed"></td>
+                <td><input type="radio" name="Equatorial Guinea" value="Visited"></td>
+                <td><input type="radio" name="Equatorial Guinea" value="Landed"></td>
+                <td><input type="radio" name="Equatorial Guinea" value="Passed"></td>
+                <td><input type="radio" name="Equatorial Guinea" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Greece</td>
+                <td><input type="radio" name="Greece" value="Lived"></td>
+                <td><input type="radio" name="Greece" value="Stayed"></td>
+                <td><input type="radio" name="Greece" value="Visited"></td>
+                <td><input type="radio" name="Greece" value="Landed"></td>
+                <td><input type="radio" name="Greece" value="Passed"></td>
+                <td><input type="radio" name="Greece" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Greenland</td>
+                <td><input type="radio" name="Greenland" value="Lived"></td>
+                <td><input type="radio" name="Greenland" value="Stayed"></td>
+                <td><input type="radio" name="Greenland" value="Visited"></td>
+                <td><input type="radio" name="Greenland" value="Landed"></td>
+                <td><input type="radio" name="Greenland" value="Passed"></td>
+                <td><input type="radio" name="Greenland" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Guatemala</td>
+                <td><input type="radio" name="Guatemala" value="Lived"></td>
+                <td><input type="radio" name="Guatemala" value="Stayed"></td>
+                <td><input type="radio" name="Guatemala" value="Visited"></td>
+                <td><input type="radio" name="Guatemala" value="Landed"></td>
+                <td><input type="radio" name="Guatemala" value="Passed"></td>
+                <td><input type="radio" name="Guatemala" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>French Guiana</td>
+                <td><input type="radio" name="French Guiana" value="Lived"></td>
+                <td><input type="radio" name="French Guiana" value="Stayed"></td>
+                <td><input type="radio" name="French Guiana" value="Visited"></td>
+                <td><input type="radio" name="French Guiana" value="Landed"></td>
+                <td><input type="radio" name="French Guiana" value="Passed"></td>
+                <td><input type="radio" name="French Guiana" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Guyana</td>
+                <td><input type="radio" name="Guyana" value="Lived"></td>
+                <td><input type="radio" name="Guyana" value="Stayed"></td>
+                <td><input type="radio" name="Guyana" value="Visited"></td>
+                <td><input type="radio" name="Guyana" value="Landed"></td>
+                <td><input type="radio" name="Guyana" value="Passed"></td>
+                <td><input type="radio" name="Guyana" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Honduras</td>
+                <td><input type="radio" name="Honduras" value="Lived"></td>
+                <td><input type="radio" name="Honduras" value="Stayed"></td>
+                <td><input type="radio" name="Honduras" value="Visited"></td>
+                <td><input type="radio" name="Honduras" value="Landed"></td>
+                <td><input type="radio" name="Honduras" value="Passed"></td>
+                <td><input type="radio" name="Honduras" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Croatia</td>
+                <td><input type="radio" name="Croatia" value="Lived"></td>
+                <td><input type="radio" name="Croatia" value="Stayed"></td>
+                <td><input type="radio" name="Croatia" value="Visited"></td>
+                <td><input type="radio" name="Croatia" value="Landed"></td>
+                <td><input type="radio" name="Croatia" value="Passed"></td>
+                <td><input type="radio" name="Croatia" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Haiti</td>
+                <td><input type="radio" name="Haiti" value="Lived"></td>
+                <td><input type="radio" name="Haiti" value="Stayed"></td>
+                <td><input type="radio" name="Haiti" value="Visited"></td>
+                <td><input type="radio" name="Haiti" value="Landed"></td>
+                <td><input type="radio" name="Haiti" value="Passed"></td>
+                <td><input type="radio" name="Haiti" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Hungary</td>
+                <td><input type="radio" name="Hungary" value="Lived"></td>
+                <td><input type="radio" name="Hungary" value="Stayed"></td>
+                <td><input type="radio" name="Hungary" value="Visited"></td>
+                <td><input type="radio" name="Hungary" value="Landed"></td>
+                <td><input type="radio" name="Hungary" value="Passed"></td>
+                <td><input type="radio" name="Hungary" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Indonesia</td>
+                <td><input type="radio" name="Indonesia" value="Lived"></td>
+                <td><input type="radio" name="Indonesia" value="Stayed"></td>
+                <td><input type="radio" name="Indonesia" value="Visited"></td>
+                <td><input type="radio" name="Indonesia" value="Landed"></td>
+                <td><input type="radio" name="Indonesia" value="Passed"></td>
+                <td><input type="radio" name="Indonesia" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>India</td>
+                <td><input type="radio" name="India" value="Lived"></td>
+                <td><input type="radio" name="India" value="Stayed"></td>
+                <td><input type="radio" name="India" value="Visited"></td>
+                <td><input type="radio" name="India" value="Landed"></td>
+                <td><input type="radio" name="India" value="Passed"></td>
+                <td><input type="radio" name="India" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Ireland</td>
+                <td><input type="radio" name="Ireland" value="Lived"></td>
+                <td><input type="radio" name="Ireland" value="Stayed"></td>
+                <td><input type="radio" name="Ireland" value="Visited"></td>
+                <td><input type="radio" name="Ireland" value="Landed"></td>
+                <td><input type="radio" name="Ireland" value="Passed"></td>
+                <td><input type="radio" name="Ireland" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Iran</td>
+                <td><input type="radio" name="Iran" value="Lived"></td>
+                <td><input type="radio" name="Iran" value="Stayed"></td>
+                <td><input type="radio" name="Iran" value="Visited"></td>
+                <td><input type="radio" name="Iran" value="Landed"></td>
+                <td><input type="radio" name="Iran" value="Passed"></td>
+                <td><input type="radio" name="Iran" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Iraq</td>
+                <td><input type="radio" name="Iraq" value="Lived"></td>
+                <td><input type="radio" name="Iraq" value="Stayed"></td>
+                <td><input type="radio" name="Iraq" value="Visited"></td>
+                <td><input type="radio" name="Iraq" value="Landed"></td>
+                <td><input type="radio" name="Iraq" value="Passed"></td>
+                <td><input type="radio" name="Iraq" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Iceland</td>
+                <td><input type="radio" name="Iceland" value="Lived"></td>
+                <td><input type="radio" name="Iceland" value="Stayed"></td>
+                <td><input type="radio" name="Iceland" value="Visited"></td>
+                <td><input type="radio" name="Iceland" value="Landed"></td>
+                <td><input type="radio" name="Iceland" value="Passed"></td>
+                <td><input type="radio" name="Iceland" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Israel</td>
+                <td><input type="radio" name="Israel" value="Lived"></td>
+                <td><input type="radio" name="Israel" value="Stayed"></td>
+                <td><input type="radio" name="Israel" value="Visited"></td>
+                <td><input type="radio" name="Israel" value="Landed"></td>
+                <td><input type="radio" name="Israel" value="Passed"></td>
+                <td><input type="radio" name="Israel" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Italy</td>
+                <td><input type="radio" name="Italy" value="Lived"></td>
+                <td><input type="radio" name="Italy" value="Stayed"></td>
+                <td><input type="radio" name="Italy" value="Visited"></td>
+                <td><input type="radio" name="Italy" value="Landed"></td>
+                <td><input type="radio" name="Italy" value="Passed"></td>
+                <td><input type="radio" name="Italy" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Jamaica</td>
+                <td><input type="radio" name="Jamaica" value="Lived"></td>
+                <td><input type="radio" name="Jamaica" value="Stayed"></td>
+                <td><input type="radio" name="Jamaica" value="Visited"></td>
+                <td><input type="radio" name="Jamaica" value="Landed"></td>
+                <td><input type="radio" name="Jamaica" value="Passed"></td>
+                <td><input type="radio" name="Jamaica" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Jordan</td>
+                <td><input type="radio" name="Jordan" value="Lived"></td>
+                <td><input type="radio" name="Jordan" value="Stayed"></td>
+                <td><input type="radio" name="Jordan" value="Visited"></td>
+                <td><input type="radio" name="Jordan" value="Landed"></td>
+                <td><input type="radio" name="Jordan" value="Passed"></td>
+                <td><input type="radio" name="Jordan" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Japan</td>
+                <td><input type="radio" name="Japan" value="Lived"></td>
+                <td><input type="radio" name="Japan" value="Stayed"></td>
+                <td><input type="radio" name="Japan" value="Visited"></td>
+                <td><input type="radio" name="Japan" value="Landed"></td>
+                <td><input type="radio" name="Japan" value="Passed"></td>
+                <td><input type="radio" name="Japan" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Kazakhstan</td>
+                <td><input type="radio" name="Kazakhstan" value="Lived"></td>
+                <td><input type="radio" name="Kazakhstan" value="Stayed"></td>
+                <td><input type="radio" name="Kazakhstan" value="Visited"></td>
+                <td><input type="radio" name="Kazakhstan" value="Landed"></td>
+                <td><input type="radio" name="Kazakhstan" value="Passed"></td>
+                <td><input type="radio" name="Kazakhstan" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Kenya</td>
+                <td><input type="radio" name="Kenya" value="Lived"></td>
+                <td><input type="radio" name="Kenya" value="Stayed"></td>
+                <td><input type="radio" name="Kenya" value="Visited"></td>
+                <td><input type="radio" name="Kenya" value="Landed"></td>
+                <td><input type="radio" name="Kenya" value="Passed"></td>
+                <td><input type="radio" name="Kenya" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Kyrgyzstan</td>
+                <td><input type="radio" name="Kyrgyzstan" value="Lived"></td>
+                <td><input type="radio" name="Kyrgyzstan" value="Stayed"></td>
+                <td><input type="radio" name="Kyrgyzstan" value="Visited"></td>
+                <td><input type="radio" name="Kyrgyzstan" value="Landed"></td>
+                <td><input type="radio" name="Kyrgyzstan" value="Passed"></td>
+                <td><input type="radio" name="Kyrgyzstan" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Cambodia</td>
+                <td><input type="radio" name="Cambodia" value="Lived"></td>
+                <td><input type="radio" name="Cambodia" value="Stayed"></td>
+                <td><input type="radio" name="Cambodia" value="Visited"></td>
+                <td><input type="radio" name="Cambodia" value="Landed"></td>
+                <td><input type="radio" name="Cambodia" value="Passed"></td>
+                <td><input type="radio" name="Cambodia" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>South Korea</td>
+                <td><input type="radio" name="South Korea" value="Lived"></td>
+                <td><input type="radio" name="South Korea" value="Stayed"></td>
+                <td><input type="radio" name="South Korea" value="Visited"></td>
+                <td><input type="radio" name="South Korea" value="Landed"></td>
+                <td><input type="radio" name="South Korea" value="Passed"></td>
+                <td><input type="radio" name="South Korea" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Kosovo</td>
+                <td><input type="radio" name="Kosovo" value="Lived"></td>
+                <td><input type="radio" name="Kosovo" value="Stayed"></td>
+                <td><input type="radio" name="Kosovo" value="Visited"></td>
+                <td><input type="radio" name="Kosovo" value="Landed"></td>
+                <td><input type="radio" name="Kosovo" value="Passed"></td>
+                <td><input type="radio" name="Kosovo" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Kuwait</td>
+                <td><input type="radio" name="Kuwait" value="Lived"></td>
+                <td><input type="radio" name="Kuwait" value="Stayed"></td>
+                <td><input type="radio" name="Kuwait" value="Visited"></td>
+                <td><input type="radio" name="Kuwait" value="Landed"></td>
+                <td><input type="radio" name="Kuwait" value="Passed"></td>
+                <td><input type="radio" name="Kuwait" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Laos</td>
+                <td><input type="radio" name="Laos" value="Lived"></td>
+                <td><input type="radio" name="Laos" value="Stayed"></td>
+                <td><input type="radio" name="Laos" value="Visited"></td>
+                <td><input type="radio" name="Laos" value="Landed"></td>
+                <td><input type="radio" name="Laos" value="Passed"></td>
+                <td><input type="radio" name="Laos" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Lebanon</td>
+                <td><input type="radio" name="Lebanon" value="Lived"></td>
+                <td><input type="radio" name="Lebanon" value="Stayed"></td>
+                <td><input type="radio" name="Lebanon" value="Visited"></td>
+                <td><input type="radio" name="Lebanon" value="Landed"></td>
+                <td><input type="radio" name="Lebanon" value="Passed"></td>
+                <td><input type="radio" name="Lebanon" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Liberia</td>
+                <td><input type="radio" name="Liberia" value="Lived"></td>
+                <td><input type="radio" name="Liberia" value="Stayed"></td>
+                <td><input type="radio" name="Liberia" value="Visited"></td>
+                <td><input type="radio" name="Liberia" value="Landed"></td>
+                <td><input type="radio" name="Liberia" value="Passed"></td>
+                <td><input type="radio" name="Liberia" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Libya</td>
+                <td><input type="radio" name="Libya" value="Lived"></td>
+                <td><input type="radio" name="Libya" value="Stayed"></td>
+                <td><input type="radio" name="Libya" value="Visited"></td>
+                <td><input type="radio" name="Libya" value="Landed"></td>
+                <td><input type="radio" name="Libya" value="Passed"></td>
+                <td><input type="radio" name="Libya" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Sri Lanka</td>
+                <td><input type="radio" name="Sri Lanka" value="Lived"></td>
+                <td><input type="radio" name="Sri Lanka" value="Stayed"></td>
+                <td><input type="radio" name="Sri Lanka" value="Visited"></td>
+                <td><input type="radio" name="Sri Lanka" value="Landed"></td>
+                <td><input type="radio" name="Sri Lanka" value="Passed"></td>
+                <td><input type="radio" name="Sri Lanka" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Lesotho</td>
+                <td><input type="radio" name="Lesotho" value="Lived"></td>
+                <td><input type="radio" name="Lesotho" value="Stayed"></td>
+                <td><input type="radio" name="Lesotho" value="Visited"></td>
+                <td><input type="radio" name="Lesotho" value="Landed"></td>
+                <td><input type="radio" name="Lesotho" value="Passed"></td>
+                <td><input type="radio" name="Lesotho" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Lithuania</td>
+                <td><input type="radio" name="Lithuania" value="Lived"></td>
+                <td><input type="radio" name="Lithuania" value="Stayed"></td>
+                <td><input type="radio" name="Lithuania" value="Visited"></td>
+                <td><input type="radio" name="Lithuania" value="Landed"></td>
+                <td><input type="radio" name="Lithuania" value="Passed"></td>
+                <td><input type="radio" name="Lithuania" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Luxembourg</td>
+                <td><input type="radio" name="Luxembourg" value="Lived"></td>
+                <td><input type="radio" name="Luxembourg" value="Stayed"></td>
+                <td><input type="radio" name="Luxembourg" value="Visited"></td>
+                <td><input type="radio" name="Luxembourg" value="Landed"></td>
+                <td><input type="radio" name="Luxembourg" value="Passed"></td>
+                <td><input type="radio" name="Luxembourg" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Latvia</td>
+                <td><input type="radio" name="Latvia" value="Lived"></td>
+                <td><input type="radio" name="Latvia" value="Stayed"></td>
+                <td><input type="radio" name="Latvia" value="Visited"></td>
+                <td><input type="radio" name="Latvia" value="Landed"></td>
+                <td><input type="radio" name="Latvia" value="Passed"></td>
+                <td><input type="radio" name="Latvia" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Morocco</td>
+                <td><input type="radio" name="Morocco" value="Lived"></td>
+                <td><input type="radio" name="Morocco" value="Stayed"></td>
+                <td><input type="radio" name="Morocco" value="Visited"></td>
+                <td><input type="radio" name="Morocco" value="Landed"></td>
+                <td><input type="radio" name="Morocco" value="Passed"></td>
+                <td><input type="radio" name="Morocco" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Moldova</td>
+                <td><input type="radio" name="Moldova" value="Lived"></td>
+                <td><input type="radio" name="Moldova" value="Stayed"></td>
+                <td><input type="radio" name="Moldova" value="Visited"></td>
+                <td><input type="radio" name="Moldova" value="Landed"></td>
+                <td><input type="radio" name="Moldova" value="Passed"></td>
+                <td><input type="radio" name="Moldova" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Madagascar</td>
+                <td><input type="radio" name="Madagascar" value="Lived"></td>
+                <td><input type="radio" name="Madagascar" value="Stayed"></td>
+                <td><input type="radio" name="Madagascar" value="Visited"></td>
+                <td><input type="radio" name="Madagascar" value="Landed"></td>
+                <td><input type="radio" name="Madagascar" value="Passed"></td>
+                <td><input type="radio" name="Madagascar" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Mexico</td>
+                <td><input type="radio" name="Mexico" value="Lived"></td>
+                <td><input type="radio" name="Mexico" value="Stayed"></td>
+                <td><input type="radio" name="Mexico" value="Visited"></td>
+                <td><input type="radio" name="Mexico" value="Landed"></td>
+                <td><input type="radio" name="Mexico" value="Passed"></td>
+                <td><input type="radio" name="Mexico" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Macedonia</td>
+                <td><input type="radio" name="Macedonia" value="Lived"></td>
+                <td><input type="radio" name="Macedonia" value="Stayed"></td>
+                <td><input type="radio" name="Macedonia" value="Visited"></td>
+                <td><input type="radio" name="Macedonia" value="Landed"></td>
+                <td><input type="radio" name="Macedonia" value="Passed"></td>
+                <td><input type="radio" name="Macedonia" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Mali</td>
+                <td><input type="radio" name="Mali" value="Lived"></td>
+                <td><input type="radio" name="Mali" value="Stayed"></td>
+                <td><input type="radio" name="Mali" value="Visited"></td>
+                <td><input type="radio" name="Mali" value="Landed"></td>
+                <td><input type="radio" name="Mali" value="Passed"></td>
+                <td><input type="radio" name="Mali" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Malta</td>
+                <td><input type="radio" name="Malta" value="Lived"></td>
+                <td><input type="radio" name="Malta" value="Stayed"></td>
+                <td><input type="radio" name="Malta" value="Visited"></td>
+                <td><input type="radio" name="Malta" value="Landed"></td>
+                <td><input type="radio" name="Malta" value="Passed"></td>
+                <td><input type="radio" name="Malta" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Myanmar</td>
+                <td><input type="radio" name="Myanmar" value="Lived"></td>
+                <td><input type="radio" name="Myanmar" value="Stayed"></td>
+                <td><input type="radio" name="Myanmar" value="Visited"></td>
+                <td><input type="radio" name="Myanmar" value="Landed"></td>
+                <td><input type="radio" name="Myanmar" value="Passed"></td>
+                <td><input type="radio" name="Myanmar" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Montenegro</td>
+                <td><input type="radio" name="Montenegro" value="Lived"></td>
+                <td><input type="radio" name="Montenegro" value="Stayed"></td>
+                <td><input type="radio" name="Montenegro" value="Visited"></td>
+                <td><input type="radio" name="Montenegro" value="Landed"></td>
+                <td><input type="radio" name="Montenegro" value="Passed"></td>
+                <td><input type="radio" name="Montenegro" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Mongolia</td>
+                <td><input type="radio" name="Mongolia" value="Lived"></td>
+                <td><input type="radio" name="Mongolia" value="Stayed"></td>
+                <td><input type="radio" name="Mongolia" value="Visited"></td>
+                <td><input type="radio" name="Mongolia" value="Landed"></td>
+                <td><input type="radio" name="Mongolia" value="Passed"></td>
+                <td><input type="radio" name="Mongolia" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Mozambique</td>
+                <td><input type="radio" name="Mozambique" value="Lived"></td>
+                <td><input type="radio" name="Mozambique" value="Stayed"></td>
+                <td><input type="radio" name="Mozambique" value="Visited"></td>
+                <td><input type="radio" name="Mozambique" value="Landed"></td>
+                <td><input type="radio" name="Mozambique" value="Passed"></td>
+                <td><input type="radio" name="Mozambique" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Mauritania</td>
+                <td><input type="radio" name="Mauritania" value="Lived"></td>
+                <td><input type="radio" name="Mauritania" value="Stayed"></td>
+                <td><input type="radio" name="Mauritania" value="Visited"></td>
+                <td><input type="radio" name="Mauritania" value="Landed"></td>
+                <td><input type="radio" name="Mauritania" value="Passed"></td>
+                <td><input type="radio" name="Mauritania" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Malawi</td>
+                <td><input type="radio" name="Malawi" value="Lived"></td>
+                <td><input type="radio" name="Malawi" value="Stayed"></td>
+                <td><input type="radio" name="Malawi" value="Visited"></td>
+                <td><input type="radio" name="Malawi" value="Landed"></td>
+                <td><input type="radio" name="Malawi" value="Passed"></td>
+                <td><input type="radio" name="Malawi" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Malaysia</td>
+                <td><input type="radio" name="Malaysia" value="Lived"></td>
+                <td><input type="radio" name="Malaysia" value="Stayed"></td>
+                <td><input type="radio" name="Malaysia" value="Visited"></td>
+                <td><input type="radio" name="Malaysia" value="Landed"></td>
+                <td><input type="radio" name="Malaysia" value="Passed"></td>
+                <td><input type="radio" name="Malaysia" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Namibia</td>
+                <td><input type="radio" name="Namibia" value="Lived"></td>
+                <td><input type="radio" name="Namibia" value="Stayed"></td>
+                <td><input type="radio" name="Namibia" value="Visited"></td>
+                <td><input type="radio" name="Namibia" value="Landed"></td>
+                <td><input type="radio" name="Namibia" value="Passed"></td>
+                <td><input type="radio" name="Namibia" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>New Caledonia</td>
+                <td><input type="radio" name="New Caledonia" value="Lived"></td>
+                <td><input type="radio" name="New Caledonia" value="Stayed"></td>
+                <td><input type="radio" name="New Caledonia" value="Visited"></td>
+                <td><input type="radio" name="New Caledonia" value="Landed"></td>
+                <td><input type="radio" name="New Caledonia" value="Passed"></td>
+                <td><input type="radio" name="New Caledonia" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Niger</td>
+                <td><input type="radio" name="Niger" value="Lived"></td>
+                <td><input type="radio" name="Niger" value="Stayed"></td>
+                <td><input type="radio" name="Niger" value="Visited"></td>
+                <td><input type="radio" name="Niger" value="Landed"></td>
+                <td><input type="radio" name="Niger" value="Passed"></td>
+                <td><input type="radio" name="Niger" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Nigeria</td>
+                <td><input type="radio" name="Nigeria" value="Lived"></td>
+                <td><input type="radio" name="Nigeria" value="Stayed"></td>
+                <td><input type="radio" name="Nigeria" value="Visited"></td>
+                <td><input type="radio" name="Nigeria" value="Landed"></td>
+                <td><input type="radio" name="Nigeria" value="Passed"></td>
+                <td><input type="radio" name="Nigeria" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Nicaragua</td>
+                <td><input type="radio" name="Nicaragua" value="Lived"></td>
+                <td><input type="radio" name="Nicaragua" value="Stayed"></td>
+                <td><input type="radio" name="Nicaragua" value="Visited"></td>
+                <td><input type="radio" name="Nicaragua" value="Landed"></td>
+                <td><input type="radio" name="Nicaragua" value="Passed"></td>
+                <td><input type="radio" name="Nicaragua" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Netherlands</td>
+                <td><input type="radio" name="Netherlands" value="Lived"></td>
+                <td><input type="radio" name="Netherlands" value="Stayed"></td>
+                <td><input type="radio" name="Netherlands" value="Visited"></td>
+                <td><input type="radio" name="Netherlands" value="Landed"></td>
+                <td><input type="radio" name="Netherlands" value="Passed"></td>
+                <td><input type="radio" name="Netherlands" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Norway</td>
+                <td><input type="radio" name="Norway" value="Lived"></td>
+                <td><input type="radio" name="Norway" value="Stayed"></td>
+                <td><input type="radio" name="Norway" value="Visited"></td>
+                <td><input type="radio" name="Norway" value="Landed"></td>
+                <td><input type="radio" name="Norway" value="Passed"></td>
+                <td><input type="radio" name="Norway" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Nepal</td>
+                <td><input type="radio" name="Nepal" value="Lived"></td>
+                <td><input type="radio" name="Nepal" value="Stayed"></td>
+                <td><input type="radio" name="Nepal" value="Visited"></td>
+                <td><input type="radio" name="Nepal" value="Landed"></td>
+                <td><input type="radio" name="Nepal" value="Passed"></td>
+                <td><input type="radio" name="Nepal" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>New Zealand</td>
+                <td><input type="radio" name="New Zealand" value="Lived"></td>
+                <td><input type="radio" name="New Zealand" value="Stayed"></td>
+                <td><input type="radio" name="New Zealand" value="Visited"></td>
+                <td><input type="radio" name="New Zealand" value="Landed"></td>
+                <td><input type="radio" name="New Zealand" value="Passed"></td>
+                <td><input type="radio" name="New Zealand" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Oman</td>
+                <td><input type="radio" name="Oman" value="Lived"></td>
+                <td><input type="radio" name="Oman" value="Stayed"></td>
+                <td><input type="radio" name="Oman" value="Visited"></td>
+                <td><input type="radio" name="Oman" value="Landed"></td>
+                <td><input type="radio" name="Oman" value="Passed"></td>
+                <td><input type="radio" name="Oman" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Pakistan</td>
+                <td><input type="radio" name="Pakistan" value="Lived"></td>
+                <td><input type="radio" name="Pakistan" value="Stayed"></td>
+                <td><input type="radio" name="Pakistan" value="Visited"></td>
+                <td><input type="radio" name="Pakistan" value="Landed"></td>
+                <td><input type="radio" name="Pakistan" value="Passed"></td>
+                <td><input type="radio" name="Pakistan" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Panama</td>
+                <td><input type="radio" name="Panama" value="Lived"></td>
+                <td><input type="radio" name="Panama" value="Stayed"></td>
+                <td><input type="radio" name="Panama" value="Visited"></td>
+                <td><input type="radio" name="Panama" value="Landed"></td>
+                <td><input type="radio" name="Panama" value="Passed"></td>
+                <td><input type="radio" name="Panama" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Peru</td>
+                <td><input type="radio" name="Peru" value="Lived"></td>
+                <td><input type="radio" name="Peru" value="Stayed"></td>
+                <td><input type="radio" name="Peru" value="Visited"></td>
+                <td><input type="radio" name="Peru" value="Landed"></td>
+                <td><input type="radio" name="Peru" value="Passed"></td>
+                <td><input type="radio" name="Peru" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Philippines</td>
+                <td><input type="radio" name="Philippines" value="Lived"></td>
+                <td><input type="radio" name="Philippines" value="Stayed"></td>
+                <td><input type="radio" name="Philippines" value="Visited"></td>
+                <td><input type="radio" name="Philippines" value="Landed"></td>
+                <td><input type="radio" name="Philippines" value="Passed"></td>
+                <td><input type="radio" name="Philippines" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Papua New Guinea</td>
+                <td><input type="radio" name="Papua New Guinea" value="Lived"></td>
+                <td><input type="radio" name="Papua New Guinea" value="Stayed"></td>
+                <td><input type="radio" name="Papua New Guinea" value="Visited"></td>
+                <td><input type="radio" name="Papua New Guinea" value="Landed"></td>
+                <td><input type="radio" name="Papua New Guinea" value="Passed"></td>
+                <td><input type="radio" name="Papua New Guinea" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Poland</td>
+                <td><input type="radio" name="Poland" value="Lived"></td>
+                <td><input type="radio" name="Poland" value="Stayed"></td>
+                <td><input type="radio" name="Poland" value="Visited"></td>
+                <td><input type="radio" name="Poland" value="Landed"></td>
+                <td><input type="radio" name="Poland" value="Passed"></td>
+                <td><input type="radio" name="Poland" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Puerto Rico</td>
+                <td><input type="radio" name="Puerto Rico" value="Lived"></td>
+                <td><input type="radio" name="Puerto Rico" value="Stayed"></td>
+                <td><input type="radio" name="Puerto Rico" value="Visited"></td>
+                <td><input type="radio" name="Puerto Rico" value="Landed"></td>
+                <td><input type="radio" name="Puerto Rico" value="Passed"></td>
+                <td><input type="radio" name="Puerto Rico" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>North Korea</td>
+                <td><input type="radio" name="North Korea" value="Lived"></td>
+                <td><input type="radio" name="North Korea" value="Stayed"></td>
+                <td><input type="radio" name="North Korea" value="Visited"></td>
+                <td><input type="radio" name="North Korea" value="Landed"></td>
+                <td><input type="radio" name="North Korea" value="Passed"></td>
+                <td><input type="radio" name="North Korea" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Portugal</td>
+                <td><input type="radio" name="Portugal" value="Lived"></td>
+                <td><input type="radio" name="Portugal" value="Stayed"></td>
+                <td><input type="radio" name="Portugal" value="Visited"></td>
+                <td><input type="radio" name="Portugal" value="Landed"></td>
+                <td><input type="radio" name="Portugal" value="Passed"></td>
+                <td><input type="radio" name="Portugal" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Paraguay</td>
+                <td><input type="radio" name="Paraguay" value="Lived"></td>
+                <td><input type="radio" name="Paraguay" value="Stayed"></td>
+                <td><input type="radio" name="Paraguay" value="Visited"></td>
+                <td><input type="radio" name="Paraguay" value="Landed"></td>
+                <td><input type="radio" name="Paraguay" value="Passed"></td>
+                <td><input type="radio" name="Paraguay" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Qatar</td>
+                <td><input type="radio" name="Qatar" value="Lived"></td>
+                <td><input type="radio" name="Qatar" value="Stayed"></td>
+                <td><input type="radio" name="Qatar" value="Visited"></td>
+                <td><input type="radio" name="Qatar" value="Landed"></td>
+                <td><input type="radio" name="Qatar" value="Passed"></td>
+                <td><input type="radio" name="Qatar" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Romania</td>
+                <td><input type="radio" name="Romania" value="Lived"></td>
+                <td><input type="radio" name="Romania" value="Stayed"></td>
+                <td><input type="radio" name="Romania" value="Visited"></td>
+                <td><input type="radio" name="Romania" value="Landed"></td>
+                <td><input type="radio" name="Romania" value="Passed"></td>
+                <td><input type="radio" name="Romania" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Russia</td>
+                <td><input type="radio" name="Russia" value="Lived"></td>
+                <td><input type="radio" name="Russia" value="Stayed"></td>
+                <td><input type="radio" name="Russia" value="Visited"></td>
+                <td><input type="radio" name="Russia" value="Landed"></td>
+                <td><input type="radio" name="Russia" value="Passed"></td>
+                <td><input type="radio" name="Russia" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Rwanda</td>
+                <td><input type="radio" name="Rwanda" value="Lived"></td>
+                <td><input type="radio" name="Rwanda" value="Stayed"></td>
+                <td><input type="radio" name="Rwanda" value="Visited"></td>
+                <td><input type="radio" name="Rwanda" value="Landed"></td>
+                <td><input type="radio" name="Rwanda" value="Passed"></td>
+                <td><input type="radio" name="Rwanda" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Western Sahara</td>
+                <td><input type="radio" name="Western Sahara" value="Lived"></td>
+                <td><input type="radio" name="Western Sahara" value="Stayed"></td>
+                <td><input type="radio" name="Western Sahara" value="Visited"></td>
+                <td><input type="radio" name="Western Sahara" value="Landed"></td>
+                <td><input type="radio" name="Western Sahara" value="Passed"></td>
+                <td><input type="radio" name="Western Sahara" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Saudi Arabia</td>
+                <td><input type="radio" name="Saudi Arabia" value="Lived"></td>
+                <td><input type="radio" name="Saudi Arabia" value="Stayed"></td>
+                <td><input type="radio" name="Saudi Arabia" value="Visited"></td>
+                <td><input type="radio" name="Saudi Arabia" value="Landed"></td>
+                <td><input type="radio" name="Saudi Arabia" value="Passed"></td>
+                <td><input type="radio" name="Saudi Arabia" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Sudan</td>
+                <td><input type="radio" name="Sudan" value="Lived"></td>
+                <td><input type="radio" name="Sudan" value="Stayed"></td>
+                <td><input type="radio" name="Sudan" value="Visited"></td>
+                <td><input type="radio" name="Sudan" value="Landed"></td>
+                <td><input type="radio" name="Sudan" value="Passed"></td>
+                <td><input type="radio" name="Sudan" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>South Sudan</td>
+                <td><input type="radio" name="South Sudan" value="Lived"></td>
+                <td><input type="radio" name="South Sudan" value="Stayed"></td>
+                <td><input type="radio" name="South Sudan" value="Visited"></td>
+                <td><input type="radio" name="South Sudan" value="Landed"></td>
+                <td><input type="radio" name="South Sudan" value="Passed"></td>
+                <td><input type="radio" name="South Sudan" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Senegal</td>
+                <td><input type="radio" name="Senegal" value="Lived"></td>
+                <td><input type="radio" name="Senegal" value="Stayed"></td>
+                <td><input type="radio" name="Senegal" value="Visited"></td>
+                <td><input type="radio" name="Senegal" value="Landed"></td>
+                <td><input type="radio" name="Senegal" value="Passed"></td>
+                <td><input type="radio" name="Senegal" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Solomon Islands</td>
+                <td><input type="radio" name="Solomon Islands" value="Lived"></td>
+                <td><input type="radio" name="Solomon Islands" value="Stayed"></td>
+                <td><input type="radio" name="Solomon Islands" value="Visited"></td>
+                <td><input type="radio" name="Solomon Islands" value="Landed"></td>
+                <td><input type="radio" name="Solomon Islands" value="Passed"></td>
+                <td><input type="radio" name="Solomon Islands" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Sierra Leone</td>
+                <td><input type="radio" name="Sierra Leone" value="Lived"></td>
+                <td><input type="radio" name="Sierra Leone" value="Stayed"></td>
+                <td><input type="radio" name="Sierra Leone" value="Visited"></td>
+                <td><input type="radio" name="Sierra Leone" value="Landed"></td>
+                <td><input type="radio" name="Sierra Leone" value="Passed"></td>
+                <td><input type="radio" name="Sierra Leone" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>El Salvador</td>
+                <td><input type="radio" name="El Salvador" value="Lived"></td>
+                <td><input type="radio" name="El Salvador" value="Stayed"></td>
+                <td><input type="radio" name="El Salvador" value="Visited"></td>
+                <td><input type="radio" name="El Salvador" value="Landed"></td>
+                <td><input type="radio" name="El Salvador" value="Passed"></td>
+                <td><input type="radio" name="El Salvador" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Somaliland</td>
+                <td><input type="radio" name="Somaliland" value="Lived"></td>
+                <td><input type="radio" name="Somaliland" value="Stayed"></td>
+                <td><input type="radio" name="Somaliland" value="Visited"></td>
+                <td><input type="radio" name="Somaliland" value="Landed"></td>
+                <td><input type="radio" name="Somaliland" value="Passed"></td>
+                <td><input type="radio" name="Somaliland" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Somalia</td>
+                <td><input type="radio" name="Somalia" value="Lived"></td>
+                <td><input type="radio" name="Somalia" value="Stayed"></td>
+                <td><input type="radio" name="Somalia" value="Visited"></td>
+                <td><input type="radio" name="Somalia" value="Landed"></td>
+                <td><input type="radio" name="Somalia" value="Passed"></td>
+                <td><input type="radio" name="Somalia" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Republic of Serbia</td>
+                <td><input type="radio" name="Republic of Serbia" value="Lived"></td>
+                <td><input type="radio" name="Republic of Serbia" value="Stayed"></td>
+                <td><input type="radio" name="Republic of Serbia" value="Visited"></td>
+                <td><input type="radio" name="Republic of Serbia" value="Landed"></td>
+                <td><input type="radio" name="Republic of Serbia" value="Passed"></td>
+                <td><input type="radio" name="Republic of Serbia" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Suriname</td>
+                <td><input type="radio" name="Suriname" value="Lived"></td>
+                <td><input type="radio" name="Suriname" value="Stayed"></td>
+                <td><input type="radio" name="Suriname" value="Visited"></td>
+                <td><input type="radio" name="Suriname" value="Landed"></td>
+                <td><input type="radio" name="Suriname" value="Passed"></td>
+                <td><input type="radio" name="Suriname" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Slovakia</td>
+                <td><input type="radio" name="Slovakia" value="Lived"></td>
+                <td><input type="radio" name="Slovakia" value="Stayed"></td>
+                <td><input type="radio" name="Slovakia" value="Visited"></td>
+                <td><input type="radio" name="Slovakia" value="Landed"></td>
+                <td><input type="radio" name="Slovakia" value="Passed"></td>
+                <td><input type="radio" name="Slovakia" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Slovenia</td>
+                <td><input type="radio" name="Slovenia" value="Lived"></td>
+                <td><input type="radio" name="Slovenia" value="Stayed"></td>
+                <td><input type="radio" name="Slovenia" value="Visited"></td>
+                <td><input type="radio" name="Slovenia" value="Landed"></td>
+                <td><input type="radio" name="Slovenia" value="Passed"></td>
+                <td><input type="radio" name="Slovenia" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Sweden</td>
+                <td><input type="radio" name="Sweden" value="Lived"></td>
+                <td><input type="radio" name="Sweden" value="Stayed"></td>
+                <td><input type="radio" name="Sweden" value="Visited"></td>
+                <td><input type="radio" name="Sweden" value="Landed"></td>
+                <td><input type="radio" name="Sweden" value="Passed"></td>
+                <td><input type="radio" name="Sweden" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Swaziland</td>
+                <td><input type="radio" name="Swaziland" value="Lived"></td>
+                <td><input type="radio" name="Swaziland" value="Stayed"></td>
+                <td><input type="radio" name="Swaziland" value="Visited"></td>
+                <td><input type="radio" name="Swaziland" value="Landed"></td>
+                <td><input type="radio" name="Swaziland" value="Passed"></td>
+                <td><input type="radio" name="Swaziland" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Syria</td>
+                <td><input type="radio" name="Syria" value="Lived"></td>
+                <td><input type="radio" name="Syria" value="Stayed"></td>
+                <td><input type="radio" name="Syria" value="Visited"></td>
+                <td><input type="radio" name="Syria" value="Landed"></td>
+                <td><input type="radio" name="Syria" value="Passed"></td>
+                <td><input type="radio" name="Syria" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Chad</td>
+                <td><input type="radio" name="Chad" value="Lived"></td>
+                <td><input type="radio" name="Chad" value="Stayed"></td>
+                <td><input type="radio" name="Chad" value="Visited"></td>
+                <td><input type="radio" name="Chad" value="Landed"></td>
+                <td><input type="radio" name="Chad" value="Passed"></td>
+                <td><input type="radio" name="Chad" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Togo</td>
+                <td><input type="radio" name="Togo" value="Lived"></td>
+                <td><input type="radio" name="Togo" value="Stayed"></td>
+                <td><input type="radio" name="Togo" value="Visited"></td>
+                <td><input type="radio" name="Togo" value="Landed"></td>
+                <td><input type="radio" name="Togo" value="Passed"></td>
+                <td><input type="radio" name="Togo" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Thailand</td>
+                <td><input type="radio" name="Thailand" value="Lived"></td>
+                <td><input type="radio" name="Thailand" value="Stayed"></td>
+                <td><input type="radio" name="Thailand" value="Visited"></td>
+                <td><input type="radio" name="Thailand" value="Landed"></td>
+                <td><input type="radio" name="Thailand" value="Passed"></td>
+                <td><input type="radio" name="Thailand" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Tajikistan</td>
+                <td><input type="radio" name="Tajikistan" value="Lived"></td>
+                <td><input type="radio" name="Tajikistan" value="Stayed"></td>
+                <td><input type="radio" name="Tajikistan" value="Visited"></td>
+                <td><input type="radio" name="Tajikistan" value="Landed"></td>
+                <td><input type="radio" name="Tajikistan" value="Passed"></td>
+                <td><input type="radio" name="Tajikistan" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Turkmenistan</td>
+                <td><input type="radio" name="Turkmenistan" value="Lived"></td>
+                <td><input type="radio" name="Turkmenistan" value="Stayed"></td>
+                <td><input type="radio" name="Turkmenistan" value="Visited"></td>
+                <td><input type="radio" name="Turkmenistan" value="Landed"></td>
+                <td><input type="radio" name="Turkmenistan" value="Passed"></td>
+                <td><input type="radio" name="Turkmenistan" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>East Timor</td>
+                <td><input type="radio" name="East Timor" value="Lived"></td>
+                <td><input type="radio" name="East Timor" value="Stayed"></td>
+                <td><input type="radio" name="East Timor" value="Visited"></td>
+                <td><input type="radio" name="East Timor" value="Landed"></td>
+                <td><input type="radio" name="East Timor" value="Passed"></td>
+                <td><input type="radio" name="East Timor" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Trinidad and Tobago</td>
+                <td><input type="radio" name="Trinidad and Tobago" value="Lived"></td>
+                <td><input type="radio" name="Trinidad and Tobago" value="Stayed"></td>
+                <td><input type="radio" name="Trinidad and Tobago" value="Visited"></td>
+                <td><input type="radio" name="Trinidad and Tobago" value="Landed"></td>
+                <td><input type="radio" name="Trinidad and Tobago" value="Passed"></td>
+                <td><input type="radio" name="Trinidad and Tobago" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Tunisia</td>
+                <td><input type="radio" name="Tunisia" value="Lived"></td>
+                <td><input type="radio" name="Tunisia" value="Stayed"></td>
+                <td><input type="radio" name="Tunisia" value="Visited"></td>
+                <td><input type="radio" name="Tunisia" value="Landed"></td>
+                <td><input type="radio" name="Tunisia" value="Passed"></td>
+                <td><input type="radio" name="Tunisia" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Turkey</td>
+                <td><input type="radio" name="Turkey" value="Lived"></td>
+                <td><input type="radio" name="Turkey" value="Stayed"></td>
+                <td><input type="radio" name="Turkey" value="Visited"></td>
+                <td><input type="radio" name="Turkey" value="Landed"></td>
+                <td><input type="radio" name="Turkey" value="Passed"></td>
+                <td><input type="radio" name="Turkey" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Taiwan</td>
+                <td><input type="radio" name="Taiwan" value="Lived"></td>
+                <td><input type="radio" name="Taiwan" value="Stayed"></td>
+                <td><input type="radio" name="Taiwan" value="Visited"></td>
+                <td><input type="radio" name="Taiwan" value="Landed"></td>
+                <td><input type="radio" name="Taiwan" value="Passed"></td>
+                <td><input type="radio" name="Taiwan" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>United Republic of Tanzania</td>
+                <td><input type="radio" name="United Republic of Tanzania" value="Lived"></td>
+                <td><input type="radio" name="United Republic of Tanzania" value="Stayed"></td>
+                <td><input type="radio" name="United Republic of Tanzania" value="Visited"></td>
+                <td><input type="radio" name="United Republic of Tanzania" value="Landed"></td>
+                <td><input type="radio" name="United Republic of Tanzania" value="Passed"></td>
+                <td><input type="radio" name="United Republic of Tanzania" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Uganda</td>
+                <td><input type="radio" name="Uganda" value="Lived"></td>
+                <td><input type="radio" name="Uganda" value="Stayed"></td>
+                <td><input type="radio" name="Uganda" value="Visited"></td>
+                <td><input type="radio" name="Uganda" value="Landed"></td>
+                <td><input type="radio" name="Uganda" value="Passed"></td>
+                <td><input type="radio" name="Uganda" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Ukraine</td>
+                <td><input type="radio" name="Ukraine" value="Lived"></td>
+                <td><input type="radio" name="Ukraine" value="Stayed"></td>
+                <td><input type="radio" name="Ukraine" value="Visited"></td>
+                <td><input type="radio" name="Ukraine" value="Landed"></td>
+                <td><input type="radio" name="Ukraine" value="Passed"></td>
+                <td><input type="radio" name="Ukraine" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Uruguay</td>
+                <td><input type="radio" name="Uruguay" value="Lived"></td>
+                <td><input type="radio" name="Uruguay" value="Stayed"></td>
+                <td><input type="radio" name="Uruguay" value="Visited"></td>
+                <td><input type="radio" name="Uruguay" value="Landed"></td>
+                <td><input type="radio" name="Uruguay" value="Passed"></td>
+                <td><input type="radio" name="Uruguay" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>United States of America</td>
+                <td><input type="radio" name="United States of America" value="Lived"></td>
+                <td><input type="radio" name="United States of America" value="Stayed"></td>
+                <td><input type="radio" name="United States of America" value="Visited"></td>
+                <td><input type="radio" name="United States of America" value="Landed"></td>
+                <td><input type="radio" name="United States of America" value="Passed"></td>
+                <td><input type="radio" name="United States of America" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Uzbekistan</td>
+                <td><input type="radio" name="Uzbekistan" value="Lived"></td>
+                <td><input type="radio" name="Uzbekistan" value="Stayed"></td>
+                <td><input type="radio" name="Uzbekistan" value="Visited"></td>
+                <td><input type="radio" name="Uzbekistan" value="Landed"></td>
+                <td><input type="radio" name="Uzbekistan" value="Passed"></td>
+                <td><input type="radio" name="Uzbekistan" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Venezuela</td>
+                <td><input type="radio" name="Venezuela" value="Lived"></td>
+                <td><input type="radio" name="Venezuela" value="Stayed"></td>
+                <td><input type="radio" name="Venezuela" value="Visited"></td>
+                <td><input type="radio" name="Venezuela" value="Landed"></td>
+                <td><input type="radio" name="Venezuela" value="Passed"></td>
+                <td><input type="radio" name="Venezuela" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Vietnam</td>
+                <td><input type="radio" name="Vietnam" value="Lived"></td>
+                <td><input type="radio" name="Vietnam" value="Stayed"></td>
+                <td><input type="radio" name="Vietnam" value="Visited"></td>
+                <td><input type="radio" name="Vietnam" value="Landed"></td>
+                <td><input type="radio" name="Vietnam" value="Passed"></td>
+                <td><input type="radio" name="Vietnam" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Vanuatu</td>
+                <td><input type="radio" name="Vanuatu" value="Lived"></td>
+                <td><input type="radio" name="Vanuatu" value="Stayed"></td>
+                <td><input type="radio" name="Vanuatu" value="Visited"></td>
+                <td><input type="radio" name="Vanuatu" value="Landed"></td>
+                <td><input type="radio" name="Vanuatu" value="Passed"></td>
+                <td><input type="radio" name="Vanuatu" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>West Bank</td>
+                <td><input type="radio" name="West Bank" value="Lived"></td>
+                <td><input type="radio" name="West Bank" value="Stayed"></td>
+                <td><input type="radio" name="West Bank" value="Visited"></td>
+                <td><input type="radio" name="West Bank" value="Landed"></td>
+                <td><input type="radio" name="West Bank" value="Passed"></td>
+                <td><input type="radio" name="West Bank" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Yemen</td>
+                <td><input type="radio" name="Yemen" value="Lived"></td>
+                <td><input type="radio" name="Yemen" value="Stayed"></td>
+                <td><input type="radio" name="Yemen" value="Visited"></td>
+                <td><input type="radio" name="Yemen" value="Landed"></td>
+                <td><input type="radio" name="Yemen" value="Passed"></td>
+                <td><input type="radio" name="Yemen" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>South Africa</td>
+                <td><input type="radio" name="South Africa" value="Lived"></td>
+                <td><input type="radio" name="South Africa" value="Stayed"></td>
+                <td><input type="radio" name="South Africa" value="Visited"></td>
+                <td><input type="radio" name="South Africa" value="Landed"></td>
+                <td><input type="radio" name="South Africa" value="Passed"></td>
+                <td><input type="radio" name="South Africa" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Zambia</td>
+                <td><input type="radio" name="Zambia" value="Lived"></td>
+                <td><input type="radio" name="Zambia" value="Stayed"></td>
+                <td><input type="radio" name="Zambia" value="Visited"></td>
+                <td><input type="radio" name="Zambia" value="Landed"></td>
+                <td><input type="radio" name="Zambia" value="Passed"></td>
+                <td><input type="radio" name="Zambia" value="NotVisited"></td>
+            </tr>
+
+            <tr>
+                <td>Zimbabwe</td>
+                <td><input type="radio" name="Zimbabwe" value="Lived"></td>
+                <td><input type="radio" name="Zimbabwe" value="Stayed"></td>
+                <td><input type="radio" name="Zimbabwe" value="Visited"></td>
+                <td><input type="radio" name="Zimbabwe" value="Landed"></td>
+                <td><input type="radio" name="Zimbabwe" value="Passed"></td>
+                <td><input type="radio" name="Zimbabwe" value="NotVisited"></td>
+            </tr>
+
+        </tbody>
+    </table>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
