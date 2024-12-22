@@ -14,6 +14,13 @@
 
     <h1>Profile</h1>
 
+    <div class="tags">
+        <button onclick="filterPhotosByTag('2024')">2024</button>
+        <button onclick="filterPhotosByTag('2025')">2025</button>
+        <button onclick="filterPhotosByTag('blue')">blue</button>
+        <button onclick="filterPhotosByTag('favorite')">favorite</button>
+    </div>
+
     <div class="icon-container">
         <div class="icon">
             <img src="./images/icon.jpeg">
@@ -25,146 +32,153 @@
                         href="https://wasalab.w.waseda.jp">システム制御研究室</a>　B3</span><br>
                 <span class="aks"># Graphic Design　</span>
                 <span class="aks"># Controll Engineering　</span>
-                <span class="aks"># Nikon Z50</span>
+                <span class="aks"># Nikonist</span>
             </p>
         </div>
     </div>
 
     <h1>Photos</h1>
-    <!--
-    <label for="year-select">Year:</label>
-    <select id="year-select" onchange="filterPhotosByYear()">
-        <option value="all">All</option>
-        <option value="2024">2024</option>
-    </select>
+    <!-- タグのボタンを追加 
+    <div class="tags">
+        <button onclick="filterPhotosByTag('2024')">2024</button>
+        <button onclick="filterPhotosByTag('2025')">2025</button>
+        <button onclick="filterPhotosByTag('blue')">blue</button>
+        <button onclick="filterPhotosByTag('favorite')">favorite</button>
+    </div>
     -->
 
     <div class="grid-container">
         <!-- 各画像コンポーネント -->
-        <div class="image-container" data-year="2024">
+        <div class="image-container" data-tags="2024 blue">
             <img src="./images/IMG_0465.jpeg">
             <div class="overlay">
                 <p class="caption">Yamanashi, 2024. 2</p>
             </div>
         </div>
-        <div class="image-container" data-year="2024">
+        <div class="image-container" data-tags="2024 geometric">
             <img src="./images/DSC_0008.jpeg">
             <div class="overlay">
                 <p class="caption">Shinjuku, 2024. 4</p>
             </div>
         </div>
-        <div class="image-container" data-year="2024">
+        <div class="image-container" data-tags="2024">
             <img src="./images/DSC_0143.jpeg">
             <div class="overlay">
                 <p class="caption">Akihabara, 2024. 6</p>
             </div>
         </div>
-        <div class="image-container" data-year="2024">
+        <div class="image-container" data-tags="2024 blue">
             <img src="./images/DSC_0204.jpeg">
             <div class="overlay">
                 <p class="caption">Inawashiro, 2024. 6</p>
             </div>
         </div>
-        <div class="image-container" data-year="2024">
+        <div class="image-container" data-tags="2024">
             <img src="./images/DSC_0295.jpeg">
             <div class="overlay">
                 <p class="caption">Sado, 2024. 6</p>
             </div>
         </div>
-        <div class="image-container" data-year="2024">
+        <div class="image-container" data-tags="2024 geometric">
             <img src="./images/DSC_0565.jpeg">
             <div class="overlay">
                 <p class="caption">Azabudai, 2024. 8</p>
             </div>
         </div>
-        <div class="image-container" data-year="2024">
+        <div class="image-container" data-tags="2024">
             <img src="./images/DSC_0761.jpeg">
             <div class="overlay">
                 <p class="caption">Sendai, 2024. 8</p>
             </div>
         </div>
-        <div class="image-container" data-year="2024">
+        <div class="image-container" data-tags="2024 blue">
             <img src="./images/DSC_0777.jpeg">
             <div class="overlay">
                 <p class="caption">Matsushima, 2024. 8</p>
             </div>
         </div>
-        <div class="image-container" data-year="2024">
+        <div class="image-container" data-tags="2024 animal">
             <img src="./images/DSC_0882.jpeg">
             <div class="overlay">
                 <p class="caption">Shiroishi, 2024. 8</p>
             </div>
         </div>
-        <div class="image-container" data-year="2024">
+        <div class="image-container" data-tags="2024 blue">
             <img src="./images/DSC_1015.jpeg">
             <div class="overlay">
                 <p class="caption">Sapporo, 2024. 8</p>
             </div>
         </div>
-        <div class="image-container" data-year="2024">
+        <div class="image-container" data-tags="2024 blue">
             <img src="./images/DSC_1041.jpeg">
             <div class="overlay">
                 <p class="caption">Yuzawa, 2024. 9</p>
             </div>
         </div>
-        <div class="image-container" data-year="2024">
+        <div class="image-container" data-tags="2024">
             <img src="./images/IMG_2293.jpeg">
             <div class="overlay">
                 <p class="caption">Yuzawa, 2024. 9</p>
             </div>
         </div>
-        <div class="image-container" data-year="2024">
+        <div class="image-container" data-tags="2024">
             <img src="./images/DSC_1082.jpeg">
             <div class="overlay">
                 <p class="caption">Tokamachi, 2024. 9</p>
             </div>
         </div>
-        <div class="image-container" data-year="2024">
+        <div class="image-container" data-tags="2024">
             <img src="./images/DSC_1146.jpeg">
             <div class="overlay">
                 <p class="caption">Samarkand, 2024. 9</p>
             </div>
         </div>
-        <div class="image-container" data-year="2024">
+        <div class="image-container" data-tags="2024 blue">
             <img src="./images/DSC_1165.jpeg">
             <div class="overlay">
                 <p class="caption">Samarkand, 2024. 9</p>
             </div>
         </div>
-        <div class="image-container" data-year="2024">
+        <div class="image-container" data-tags="2024">
             <img src="./images/DSC_1255.jpeg">
             <div class="overlay">
                 <p class="caption">Sri Lanka, 2024. 9</p>
             </div>
         </div>
-        <div class="image-container" data-year="2024">
+        <div class="image-container" data-tags="2024">
             <img src="./images/DSC_1282.jpeg">
             <div class="overlay">
                 <p class="caption">Hakone, 2024. 9</p>
             </div>
         </div>
-        <div class="image-container" data-year="2024">
+        <div class="image-container" data-tags="2024">
             <img src="./images/IMG_3422.jpeg">
             <div class="overlay">
                 <p class="caption">Saga, 2024. 10</p>
             </div>
         </div>
-        <div class="image-container" data-year="2024">
+        <div class="image-container" data-tags="2024">
             <img src="./images/DSC_2416.jpeg">
             <div class="overlay">
                 <p class="caption">Jingu, 2024. 11</p>
             </div>
         </div>
-        <div class="image-container" data-year="2024">
+        <div class="image-container" data-tags="2024">
             <img src="./images/DSC_2460.jpeg">
             <div class="overlay">
                 <p class="caption">Takao, 2024. 12</p>
             </div>
         </div>
-        <div class="image-container" data-year="2024">
+        <div class="image-container" data-tags="2024">
             <img src="./images/DSC_2588.jpeg">
             <div class="overlay">
                 <p class="caption">Kasai, 2024. 12</p>
+            </div>
+        </div>
+        <div class="image-container" data-tags="2024 blue geometric">
+            <img src="./images/DSC_2795.jpg">
+            <div class="overlay">
+                <p class="caption">Azabudai, 2024. 12</p>
             </div>
         </div>
     </div>

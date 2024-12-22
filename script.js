@@ -21,3 +21,18 @@ document.addEventListener("DOMContentLoaded", () => {
     // シャッフルされた要素をグリッドコンテナに再追加
     shuffledContainers.forEach(container => gridContainer.appendChild(container));
 });
+
+/*
+絞り込み用
+function filterPhotosByTag(tag) {
+    const images = document.querySelectorAll('.image-container');
+    images.forEach(image => {
+        const tags = image.getAttribute('data-tags').split(' ');
+        if (tags.includes(tag)) {
+            image.style.display = 'block';
+        } else {
+            image.style.display = 'none';
+        }
+    });
+}
+*/
