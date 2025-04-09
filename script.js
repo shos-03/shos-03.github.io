@@ -1,15 +1,3 @@
-function filterPhotosByYear() {
-    const year = document.getElementById('year-select').value;
-    const containers = document.querySelectorAll('.image-container');
-
-    containers.forEach(container => {
-        if (year === 'all' || container.getAttribute('data-year') === year) {
-            container.style.display = '';
-        } else {
-            container.style.display = 'none';
-        }
-    });
-}
 document.addEventListener("DOMContentLoaded", () => {
     // グリッドコンテナとその子要素（画像コンテナ）を取得
     const gridContainer = document.querySelector(".grid-container");
@@ -22,17 +10,19 @@ document.addEventListener("DOMContentLoaded", () => {
     shuffledContainers.forEach(container => gridContainer.appendChild(container));
 });
 
-/*
-絞り込み用
-function filterPhotosByTag(tag) {
-    const images = document.querySelectorAll('.image-container');
-    images.forEach(image => {
-        const tags = image.getAttribute('data-tags').split(' ');
-        if (tags.includes(tag)) {
-            image.style.display = 'block';
-        } else {
-            image.style.display = 'none';
+document.addEventListener('DOMContentLoaded', function() {
+    const filterButton = document.getElementById('filter-button');
+    const filterDropdown = document.getElementById('filter-dropdown');
+
+    filterButton.addEventListener('click', function(e) {
+        e.stopPropagation(); // クリックイベントのバブリングを防止
+        filterDropdown.classList.toggle('hidden');
+    });
+
+    // ドロップダウン外をクリックしたら非表示にする処理
+    document.addEventListener('click', function(e) {
+        if (!document.querySelector('.filter-container').contains(e.target)) {
+            filterDropdown.classList.add('hidden');
         }
     });
-}
-*/
+});
