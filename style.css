@@ -18,7 +18,7 @@ h1 {
     font-size: 36px;
 }
 
-p {
+p{
     color: #999;
 }
 
@@ -37,7 +37,6 @@ a:hover {
 }
 
 h3 {
-    color: #333;
     text-align: start;
     font-size: 24px;
     font-weight: 500;
@@ -163,4 +162,26 @@ h3 {
 span.aks {
     /* 改行位置制御*/
     display: inline-block;
+}
+
+ol {
+  list-style-type: none;
+  counter-reset: list-counter 2;
+  padding-left: 0;
+}
+
+li {
+  display: flex;
+  align-items: baseline;
+  margin-bottom: 10px;
+
+  counter-increment: list-counter -1;
+}
+
+li::before {
+  content: "[" counter(list-counter) "] ";
+  font-weight: bold;
+  margin-right: 5px;
+  
+  flex-shrink: 0;
 }
