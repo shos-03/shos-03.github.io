@@ -189,7 +189,7 @@ li::before {
 }
 
 .badge {
-    font-weight: 400;
+    font-weight: 500;
     display: inline-flex;
     align-items: center; 
     background-color: #33A6BB;
