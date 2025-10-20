@@ -189,15 +189,14 @@ li::before {
 }
 
 .badge {
-    display: inline-flex; /* inline-blockからinline-flexに変更 */
-    align-items: center; /* 追加 */
+    display: inline-flex;
+    align-items: center; 
     background-color: #33A6BB;
     color: #fff;
     padding: 2px 6px;
     border-radius: 3px;
-    margin-left: .5rem;
     white-space: nowrap;
     font-size: .9rem;
-    line-height: 1.2; /* 追加: 明示的な行の高さ */
-    height: fit-content; /* 追加 */
+    line-height: 1.2;
+    height: fit-content;
 }
