@@ -189,6 +189,7 @@ li::before {
 }
 
 .badge {
+    font-weight: 400;
     display: inline-flex;
     align-items: center; 
     background-color: #33A6BB;
@@ -200,3 +201,4 @@ li::before {
     line-height: 1.2;
     height: fit-content;
 }
+
