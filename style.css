@@ -189,11 +189,13 @@ li::before {
 }
 
 .badge {
-    background-color: #33A6BB;
+    display: inline-block;
+    background: #33A6BB;
     color: #fff;
-    padding: 1px 3px;
-    border-radius: 3px;
+    padding: 3px 3px;
+    border-radius: 4px;
     margin-left: .5rem;
     white-space: nowrap;
     font-size: .9rem;
+    line-height: 1.1; /* 追加: 行の高さを明示 */
 }
