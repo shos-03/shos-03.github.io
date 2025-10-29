@@ -20,8 +20,11 @@
 </head>
 
 <body>
+    <div class="header">
+        <a href="#about">about</a> <a href="#cv">cv</a> <a href="#publications">publications</a> <a href="#photos">photos</a>
+    </div>
 
-    <h1>Profile</h1>
+    <h1 id="about">About Me</h1>
 
     <div class="icon-container">
         <div class="icon">
@@ -30,15 +33,31 @@
         <div class="text">
             <h3>鈴木　翔</h3>
             <p>
-                <span class="aks">早稲田大学先進理工学部　</span><span class="aks">B4</span><br>
-                <span class="aks"># Graphic Design　</span>
-                <span class="aks"># Control Engineering　</span>
+                <span class="aks">早稲田大学先進理工学部</span><br>
+                <span class="aks"><a href="https://wasalab.w.waseda.jp/index.html">システム制御研究室</a>　4年</span><br>
             </p>
         </div>
     </div>
+    <!--
+        <p>
+            <a href="https://wasalab.w.waseda.jp">和佐研究室</a>所属。制御理論と経済学、情報科学の融合による、効率的かつ安定な電力市場メカニズムの研究に取り組んでいます．<br>
+        </p>
+    -->
+
+    <h1 id="cv">CV</h1>
+        <dl class="cv-list">
+            <div>
+                <dt>2022.03</dt>
+                <dd><a href="https://kaiseigakuen.jp">開成高等学校</a> 卒業</dd>
+            </div>
+            <div>
+                <dt>2022.04</dt>
+                <dd><a href="https://www.eb.waseda.ac.jp">早稲田大学 先進理工学部 電気・情報生命工学科</a> 入学</dd>
+            </div>
+        </dl>
+
         
-    <div class="pub">
-        <h1>Publications</h1>
+    <h1 id="publications">Publications</h1>
         <ol>
             <li>
             <span>鈴木, 和佐: 電力市場における蓄電池の発電事業者所有形態と社会厚生に関する分析; 第68回自動制御連合講演会, 2025.&ensp;
@@ -47,9 +66,8 @@
             </span>
             </li>
         </ol>
-    </div>
 
-    <h1>Photos</h1>    
+    <h1 id="photos">Photos</h1>    
 
     <div class="grid-container">
         <!-- 各画像コンポーネント -->
