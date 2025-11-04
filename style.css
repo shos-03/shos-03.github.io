@@ -109,28 +109,16 @@ a:hover {
     object-fit: cover;
 }
 
-/* Main sections */
-.pub {
-    max-width: 900px;
-    width: 100%;
-    box-sizing: border-box;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    justify-content: center;
-    padding: 0 2.5%;
-}
-
 /* CV list */
 .cv-list {
-    margin: 0;
+    margin: 0 auto;
     padding: 0;
     display: grid;
     grid-template-columns: max-content minmax(0, clamp(18rem, 95vw, 95vw));
     gap: 0.35rem 1.4rem;
     align-items: baseline;
     justify-content: center;
+    max-width: 480px;
 }
 
 .cv-list > div {
@@ -186,6 +174,8 @@ a:hover {
 
 /* Lists */
 ol {
+    max-width: 1200px;
+    margin: 0 auto;
     list-style-type: none;
     counter-reset: list-counter 3;
     padding-left: 0;
