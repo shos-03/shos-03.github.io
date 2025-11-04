@@ -1,6 +1,6 @@
 html {
     background-color: #fff;
-    font-family: "futura-pt", "hiragino sans", sans-serif;
+    font-family: futura-pt, Hiragino Sans, sans-serif;
     color: #333;
     font-size: 16px;
     text-align: start;
@@ -11,7 +11,7 @@ html {
 }
 
 body {
-    padding: 5rem 2%;
+    padding: 3rem 2%;
 }
 
 /* Typography */
@@ -29,6 +29,10 @@ h3 {
     font-size: 1.5rem;
     font-weight: 500;
     line-height: 50%;
+}
+
+b {
+    font-weight: 500;
 }
 
 /* Links */
@@ -59,7 +63,7 @@ a:hover {
     border-radius: 999px;
     background: rgba(255, 255, 255, 0.7);
     backdrop-filter: blur(1px);
-    box-shadow: 0 10px 30px rgba(30, 60, 90, 0.18);
+    box-shadow: 0 10px 30px rgba(30, 60, 90, 0.1);
     z-index: 1000;
 }
 
@@ -76,11 +80,10 @@ a:hover {
 }
 
 /* Anchor offset */
-#about,
 #cv,
 #publications,
 #photos {
-    scroll-margin-top: 6.5rem;
+    scroll-margin-top: 3.5rem;
 }
 
 /* Icon block */
@@ -124,7 +127,7 @@ a:hover {
     margin: 0;
     padding: 0;
     display: grid;
-    grid-template-columns: max-content minmax(0, clamp(18rem, 60vw, 32rem));
+    grid-template-columns: max-content minmax(0, clamp(18rem, 95vw, 95vw));
     gap: 0.35rem 1.4rem;
     align-items: baseline;
     justify-content: center;
@@ -144,7 +147,7 @@ a:hover {
 .cv-list dd {
     margin: 0;
     line-height: 1.6;
-    max-width: clamp(18rem, 60vw, 32rem);
+    max-width: clamp(18rem, 95vw, 95vw);
     overflow-wrap: anywhere;
 }
 
@@ -184,7 +187,7 @@ a:hover {
 /* Lists */
 ol {
     list-style-type: none;
-    counter-reset: list-counter 2;
+    counter-reset: list-counter 3;
     padding-left: 0;
 }
 
