@@ -154,17 +154,28 @@ a:hover {
     height: fit-content;
 }
 
-.badge a {
+a.badge{
+    display: inline-flex;
+    align-items: center;
+    background-color: transparent;
+    color: #33A6BB;
+    border: 1px solid #33A6BB;
+    padding: 1px 4px;
+    border-radius: 3px;
+    white-space: nowrap;
+    font-size: .9rem;
+    line-height: 1.2;
+    height: fit-content;
     text-decoration: none;
+}
+
+a.badge:visited {
     color: #33A6BB;
 }
 
-.badge a:visited {
-    color: #33A6BB;
-}
-
-.badge a:hover {
-    color: #33A6BB;
+a.badge:hover {
+    color: #fff;
+    background-color: #33A6BB;
 }
 
 .gray {
