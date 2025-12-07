@@ -338,6 +338,20 @@ li::before {
     .icon {
         width: 35%;
     }
+
+    .icon-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .profile-text {
+        width: 100%;
+        text-align: left;
+    }
+
+    .profile-name-row {
+        justify-content: center;
+    }
 }
 
 /* Filter */
