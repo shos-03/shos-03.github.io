@@ -1,5 +1,5 @@
 html {
-    background-color: #fff;
+    background: linear-gradient(to bottom, rgba(173, 216, 230, 0.3) 0%, #fff 10%);
     font-family: futura-pt, Hiragino Sans, sans-serif;
     color: #666;
     font-size: 16px;
