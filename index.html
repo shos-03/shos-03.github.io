@@ -20,257 +20,201 @@
 </head>
 
 <body>
-    <div class="header">
-        <a href="#">about</a> <a href="#cv">cv</a> <a href="#publications">publications</a> <a href="#photos">photos</a>
-    </div>
+    <header class="header">
+        <nav class="header-nav">
+            <a href="#">Top</a>
+            <a href="#publications">Publications</a>
+            <a href="#photos">Photos</a>
+        </nav>
+    </header>
 
-    <h1>About Me</h1>
+    <main class="page">
+        <section class="profile">
+            <div class="icon-container">
+                <div class="icon">
+                    <img src="./images/icon-1.jpeg" alt="Portrait of Sho Suzuki">
+                </div>
+                <div class="profile-text">
+                    <div class="profile-name-row">
+                        <h3 class="profile-name">鈴木　翔 ｜ Sho Suzuki</h3>
+                        <a class="social-link" href="https://github.com/shos-03">
+                            <img src="images/github-mark.svg" alt="GitHub" class="social-icon" />
+                        </a>
+                        <a class="social-link" href="https://www.facebook.com/profile.php?id=100074450149707">
+                            <img src="images/Facebook_Logo.png" alt="Facebook" class="social-icon" />
+                        </a>
+                    </div>
+                    <p>
+                        早稲田大学先進理工学部4年．システム制御研究室（<a href="https://wasalab.w.waseda.jp/index.html">和佐研究室</a>）所属．
+                        制御理論の知見をもとに，電力市場のメカニズムに関する研究に取り組んでいます．
+                    </p>
+                    <div class="education-grid">
+                        <div class="education-row">
+                            <span class="edu-emoji"><img src="/images/hat.webp" alt="Graduation cap"></span>
+                            <span class="edu-term">2022.4 - present</span>
+                            <span class="edu-school">早稲田大学 先進理工学部 <wbr><span class="no-break">電気・情報生命工学科</span></span>
+                        </div>
+                        <div class="education-row">
+                            <span class="edu-emoji"><img src="/images/hat.webp" alt="Graduation cap"></span>
+                            <span class="edu-term">2019.4 - 2022.3</span>
+                            <span class="edu-school">開成高等学校</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <div class="icon-container">
-        <div class="icon">
-            <img src="./images/icon.jpeg">
-        </div>
-        <div class="text">
-            <h3>鈴木　翔</h3>
-            <p>
-                <span class="aks">早稲田大学先進理工学部</span><br>
-                <span class="aks"><a href="https://wasalab.w.waseda.jp/index.html">システム制御研究室</a>　B4</span><br>
-            </p>
-        </div>
-    </div>
+        <section id="publications" class="section">
+            <div class="section-header">
+                <h1 class="section-title">Publications</h1>
+                <div class="filter-container">
+                    <button id="filter-button-type" class="filter-button">種別：<span id="current-filter-type">All</span></button>
+                    <div id="filter-dropdown-type" class="filter-dropdown hidden">
+                        <button class="filter-option" data-filter="all">All</button>
+                        <button class="filter-option" data-filter="国内会議">国内会議</button>
+                        <button class="filter-option" data-filter="学位論文">学位論文</button>
+                    </div>
 
-    <h1 id="cv">CV</h1>
-        <dl class="cv-list">
-            <div>
-                <dt>2022. 3</dt>
-                <dd><a href="https://kaiseigakuen.jp">開成高等学校</a> 卒業</dd>
+                    <button id="filter-button-year" class="filter-button">年度：<span id="current-filter-year">All</span></button>
+                    <div id="filter-dropdown-year" class="filter-dropdown hidden">
+                        <button class="filter-option" data-filter="all">All</button>
+                        <button class="filter-option" data-filter="2025">2025</button>
+                        <button class="filter-option" data-filter="2026">2026</button>
+                    </div>
+                </div>
             </div>
-            <div>
-                <dt>2022. 4</dt>
-                <dd><a href="https://www.eb.waseda.ac.jp">早稲田大学 先進理工学部 電気・情報生命工学科</a> 入学</dd>
-            </div>
-        </dl>
 
-        
-    <h1 id="publications">Publications</h1>
-        <ol>
-            <li>
-            <span><b>鈴木</b>, 和佐: 発電事業者による蓄電池所有が電力市場に及ぼす経済・環境的影響; 第16回横幹連合コンファレンス, 2025.&ensp;
-            <span class="badge">国内会議</span>
-            </span>
-            </li>
-            <li>
-            <span><b>鈴木</b>, 和佐: 電力市場における蓄電池の発電事業者所有形態と社会厚生に関する分析; 第68回自動制御連合講演会, 2025.&ensp;
-            <span class="badge">国内会議</span>
-            <a class="badge" href="https://doi.org/10.11511/jacc.68.0_1330">J-STAGE</a>
-            </span>
-            </li>
-        </ol>
+            <ol id="publications-list">
+                <li data-type="国内会議" data-year="2025" data-review="無">
+                    <span><b>鈴木</b>, 和佐: 発電事業者による蓄電池所有が電力市場に及ぼす経済・環境的影響; 第16回横幹連合コンファレンス, 2025.&ensp;
+                    <span class="badge">国内会議</span>
+                    </span>
+                </li>
+                <li data-type="国内会議" data-year="2025" data-review="無">
+                    <span><b>鈴木</b>, 和佐: 電力市場における蓄電池の発電事業者所有形態と社会厚生に関する分析; 第68回自動制御連合講演会, 2025.&ensp;
+                    <a href="https://doi.org/10.11511/jacc.68.0_1330"><img src="./images/J-STAGE.png" alt="J-STAGE link"></a>
+                    <span class="badge">国内会議</span>
+                    </span>
+                </li>
+            </ol>
+        </section>
 
-    <h1 id="photos">Photos</h1>    
+        <section id="photos" class="section">
+            <h1 class="section-title">Photos</h1>
+            <div class="grid-container">
+                <div class="image-container" data-tags="2024 blue">
+                    <img src="./images/IMG_0465.jpeg" alt="Yamanashi, 2024.2">
+                    <div class="overlay">
+                        <p class="caption">Yamanashi, 2024. 2</p>
+                    </div>
+                </div>
+                <div class="image-container" data-tags="2024 geometric">
+                    <img src="./images/DSC_0008.jpeg" alt="Shinjuku, 2024.4">
+                    <div class="overlay">
+                        <p class="caption">Shinjuku, 2024. 4</p>
+                    </div>
+                </div>
+                <div class="image-container" data-tags="2024">
+                    <img src="./images/DSC_0143.jpeg" alt="Akihabara, 2024.6">
+                    <div class="overlay">
+                        <p class="caption">Akihabara, 2024. 6</p>
+                    </div>
+                </div>
+                <div class="image-container" data-tags="2024 geometric">
+                    <img src="./images/DSC_0565.jpeg" alt="Azabudai, 2024.8">
+                    <div class="overlay">
+                        <p class="caption">Azabudai, 2024. 8</p>
+                    </div>
+                </div>
+                <div class="image-container" data-tags="2024">
+                    <img src="./images/DSC_0761.jpeg" alt="Sendai, 2024.8">
+                    <div class="overlay">
+                        <p class="caption">Sendai, 2024. 8</p>
+                    </div>
+                </div>
+                <div class="image-container" data-tags="2024 blue">
+                    <img src="./images/DSC_0777.jpeg" alt="Matsushima, 2024.8">
+                    <div class="overlay">
+                        <p class="caption">Matsushima, 2024. 8</p>
+                    </div>
+                </div>
+                <div class="image-container" data-tags="2024 blue animals">
+                    <img src="./images/DSC_1015.jpeg" alt="Sapporo, 2024.8">
+                    <div class="overlay">
+                        <p class="caption">Sapporo, 2024. 8</p>
+                    </div>
+                </div>
+                <div class="image-container" data-tags="2024 blue">
+                    <img src="./images/DSC_1041.jpeg" alt="Yuzawa, 2024.9">
+                    <div class="overlay">
+                        <p class="caption">Yuzawa, 2024. 9</p>
+                    </div>
+                </div>
+                <div class="image-container" data-tags="2024">
+                    <img src="./images/IMG_2293.jpeg" alt="Yuzawa, 2024.9">
+                    <div class="overlay">
+                        <p class="caption">Yuzawa, 2024. 9</p>
+                    </div>
+                </div>
+                <div class="image-container" data-tags="2024">
+                    <img src="./images/DSC_1082.jpeg" alt="Tokamachi, 2024.9">
+                    <div class="overlay">
+                        <p class="caption">Tokamachi, 2024. 9</p>
+                    </div>
+                </div>
+                <div class="image-container" data-tags="2024 overseas">
+                    <img src="./images/DSC_1146.jpeg" alt="Samarkand, 2024.9">
+                    <div class="overlay">
+                        <p class="caption">Samarkand, 2024. 9</p>
+                    </div>
+                </div>
+                <div class="image-container" data-tags="2025 overseas">
+                    <img src="./images/IMG_5745.jpeg" alt="London, 2025.3">
+                    <div class="overlay">
+                        <p class="caption">London, 2025. 3</p>
+                    </div>
+                </div>
+                <div class="image-container" data-tags="2025 overseas">
+                    <img src="./images/IMG_5783.jpeg" alt="London, 2025.3">
+                    <div class="overlay">
+                        <p class="caption">London, 2025. 3</p>
+                    </div>
+                </div>
+                <div class="image-container" data-tags="2025 animals">
+                    <img src="./images/DSC_3342.jpeg" alt="Ueno, 2025.2">
+                    <div class="overlay">
+                        <p class="caption">Ueno, 2025. 2</p>
+                    </div>
+                </div>
+                <div class="image-container" data-tags="2025 blue">
+                    <img src="./images/DSC_3290.jpeg" alt="Obihiro, 2025.2">
+                    <div class="overlay">
+                        <p class="caption">Obihiro, 2025. 2</p>
+                    </div>
+                </div>
+                <div class="image-container" data-tags="2024 geometric">
+                    <img src="./images/DSC_3036.jpeg" alt="Haneda, 2024.12">
+                    <div class="overlay">
+                        <p class="caption">Haneda, 2024. 12</p>
+                    </div>
+                </div>
+                <div class="image-container" data-tags="2025 blue">
+                    <img src="./images/IMG_0085.jpeg" alt="Osaka, 2025.4">
+                    <div class="overlay">
+                        <p class="caption">Osaka, 2025. 4</p>
+                    </div>
+                </div>
+                <div class="image-container" data-tags="2025 blue">
+                    <img src="./images/DSC_4297.jpeg" alt="Suginami, 2025.5">
+                    <div class="overlay">
+                        <p class="caption">Suginami, 2025. 5</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <div class="grid-container">
-        <!-- 各画像コンポーネント -->
-        <div class="image-container" data-tags="2024 blue">
-            <img src="./images/IMG_0465.jpeg">
-            <div class="overlay">
-                <p class="caption">Yamanashi, 2024. 2</p>
-            </div>
-        </div>
-        <div class="image-container" data-tags="2024 geometric">
-            <img src="./images/DSC_0008.jpeg">
-            <div class="overlay">
-                <p class="caption">Shinjuku, 2024. 4</p>
-            </div>
-        </div>
-        <div class="image-container" data-tags="2024">
-            <img src="./images/DSC_0143.jpeg">
-            <div class="overlay">
-                <p class="caption">Akihabara, 2024. 6</p>
-            </div>
-        </div>
-        <!--
-        <div class="image-container" data-tags="2024">
-            <img src="./images/DSC_0204.jpeg">
-            <div class="overlay">
-                <p class="caption">Inawashiro, 2024. 6</p>
-            </div>
-        </div>
-        <div class="image-container" data-tags="2024">
-            <img src="./images/DSC_0295.jpeg">
-            <div class="overlay">
-                <p class="caption">Sado, 2024. 6</p>
-            </div>
-        </div>
-        -->
-        <div class="image-container" data-tags="2024 geometric">
-            <img src="./images/DSC_0565.jpeg">
-            <div class="overlay">
-                <p class="caption">Azabudai, 2024. 8</p>
-            </div>
-        </div>
-        <div class="image-container" data-tags="2024">
-            <img src="./images/DSC_0761.jpeg">
-            <div class="overlay">
-                <p class="caption">Sendai, 2024. 8</p>
-            </div>
-        </div>
-        <div class="image-container" data-tags="2024 blue">
-            <img src="./images/DSC_0777.jpeg">
-            <div class="overlay">
-                <p class="caption">Matsushima, 2024. 8</p>
-            </div>
-        </div>
-        <!--
-        <div class="image-container" data-tags="2024 animals">
-            <img src="./images/DSC_0882.jpeg">
-            <div class="overlay">
-                <p class="caption">Shiroishi, 2024. 8</p>
-            </div>
-        </div>
-        -->
-        <div class="image-container" data-tags="2024 blue animals">
-            <img src="./images/DSC_1015.jpeg">
-            <div class="overlay">
-                <p class="caption">Sapporo, 2024. 8</p>
-            </div>
-        </div>
-        <div class="image-container" data-tags="2024 blue">
-            <img src="./images/DSC_1041.jpeg">
-            <div class="overlay">
-                <p class="caption">Yuzawa, 2024. 9</p>
-            </div>
-        </div>
-        <div class="image-container" data-tags="2024">
-            <img src="./images/IMG_2293.jpeg">
-            <div class="overlay">
-                <p class="caption">Yuzawa, 2024. 9</p>
-            </div>
-        </div>
-        <div class="image-container" data-tags="2024">
-            <img src="./images/DSC_1082.jpeg">
-            <div class="overlay">
-                <p class="caption">Tokamachi, 2024. 9</p>
-            </div>
-        </div>
-        <div class="image-container" data-tags="2024 overseas">
-            <img src="./images/DSC_1146.jpeg">
-            <div class="overlay">
-                <p class="caption">Samarkand, 2024. 9</p>
-            </div>
-        </div>
-        <!--
-        <div class="image-container" data-tags="2024 blue overseas">
-            <img src="./images/DSC_1165.jpeg">
-            <div class="overlay">
-                <p class="caption">Samarkand, 2024. 9</p>
-            </div>
-        </div>
-        <div class="image-container" data-tags="2024 overseas">
-            <img src="./images/DSC_1255.jpeg">
-            <div class="overlay">
-                <p class="caption">Sri Lanka, 2024. 9</p>
-            </div>
-        </div>
-        <div class="image-container" data-tags="2024">
-            <img src="./images/DSC_1282.jpeg">
-            <div class="overlay">
-                <p class="caption">Hakone, 2024. 9</p>
-            </div>
-        </div>
-  
-        <div class="image-container" data-tags="2024">
-            <img src="./images/IMG_3422.jpeg">
-            <div class="overlay">
-                <p class="caption">Saga, 2024. 10</p>
-            </div>
-        </div>
-        <div class="image-container" data-tags="2024">
-            <img src="./images/DSC_2416.jpeg">
-            <div class="overlay">
-                <p class="caption">Jingu, 2024. 11</p>
-            </div>
-        </div>
-        <div class="image-container" data-tags="2024">
-            <img src="./images/DSC_2460.jpeg">
-            <div class="overlay">
-                <p class="caption">Takao, 2024. 12</p>
-            </div>
-        </div>
-        <div class="image-container" data-tags="2024">
-            <img src="./images/DSC_2588.jpeg">
-            <div class="overlay">
-                <p class="caption">Kasai, 2024. 12</p>
-            </div>
-        </div>
-        <div class="image-container" data-tags="2024 blue geometric">
-            <img src="./images/DSC_2795.jpg">
-            <div class="overlay">
-                <p class="caption">Azabudai, 2024. 12</p>
-            </div>
-        </div>
-        -->
-        <div class="image-container" data-tags="2025 overseas">
-            <img src="./images/IMG_5745.jpeg">
-            <div class="overlay">
-                <p class="caption">London, 2025. 3</p>
-            </div>
-        </div>
-        <div class="image-container" data-tags="2025 overseas">
-            <img src="./images/IMG_5783.jpeg">
-            <div class="overlay">
-                <p class="caption">London, 2025. 3</p>
-            </div>
-        </div>
-        <div class="image-container" data-tags="2025 animals">
-            <img src="./images/DSC_3342.jpeg">
-            <div class="overlay">
-                <p class="caption">Ueno, 2025. 2</p>
-            </div>
-        </div>
-        <div class="image-container" data-tags="2025 blue">
-            <img src="./images/DSC_3290.jpeg">
-            <div class="overlay">
-                <p class="caption">Obihiro, 2025. 2</p>
-            </div>
-        </div>
-        <div class="image-container" data-tags="2024 geometric">
-            <img src="./images/DSC_3036.jpeg">
-            <div class="overlay">
-                <p class="caption">Haneda, 2024. 12</p>
-            </div>
-        </div>
-        <!--
-        <div class="image-container" data-tags="2025 animals">
-            <img src="./images/IMG_0084.jpeg">
-            <div class="overlay">
-                <p class="caption">Osaka, 2025. 4</p>
-            </div>
-        </div>
-        -->
-        <div class="image-container" data-tags="2025 blue">
-            <img src="./images/IMG_0085.jpeg">
-            <div class="overlay">
-                <p class="caption">Osaka, 2025. 4</p>
-            </div>
-        </div>
-        <!--
-        <div class="image-container" data-tags="2025 blue">
-            <img src="./images/DSC_3779.jpeg">
-            <div class="overlay">
-                <p class="caption">Itami, 2025. 4</p>
-            </div>
-        </div>
-        -->
-        <div class="image-container" data-tags="2025 blue">
-            <img src="./images/DSC_4297.jpeg">
-            <div class="overlay">
-                <p class="caption">Suginami, 2025. 5</p>
-            </div>
-        </div>
-    </div>
-
-    <p class="copy-right">© 2025 SUZUKI, Sho</p>
+        <p class="copy-right">© 2025 SUZUKI, Sho</p>
+    </main>
     <script src="script.js"></script>
 </body>
 
