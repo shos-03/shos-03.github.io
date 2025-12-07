@@ -87,3 +87,19 @@ function initPublicationFilters() {
 
     applyFilters();
 }
+
+// 言語切り替え時のスクロール位置保存
+document.querySelectorAll('a[href="/"], a[href="/en/"]').forEach(link => {
+    link.addEventListener('click', function(e) {
+        sessionStorage.setItem('scrollPosition', window.scrollY);
+    });
+});
+
+// ページ読み込み時にスクロール位置を復元
+window.addEventListener('load', function() {
+    const scrollPosition = sessionStorage.getItem('scrollPosition');
+    if (scrollPosition !== null) {
+        window.scrollTo(0, parseInt(scrollPosition));
+        sessionStorage.removeItem('scrollPosition');
+    }
+});

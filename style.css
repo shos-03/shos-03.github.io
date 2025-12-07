@@ -11,7 +11,7 @@ html {
 }
 
 body {
-    padding: 5rem 2%;
+    padding: 5rem 2% 0;
     display: flex;
     justify-content: center;
 }
@@ -451,11 +451,11 @@ li::before {
 }
 .education-row {
   display: grid;
-  grid-template-columns: 1.8rem 8rem 1fr;
+  grid-template-columns: 2rem 7.5rem 1fr;
   align-items: start;
 }
 .edu-emoji {
-  width: 1.8rem;
+  width: 1.5rem;
   text-align: center;
 }
 .edu-term {
