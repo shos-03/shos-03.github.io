@@ -20,9 +20,10 @@ function initPublicationFilters() {
     const filterContainer = document.querySelector('.filter-container');
     const listItems = Array.from(publicationsList.querySelectorAll('li'));
 
+    // defaultLabel を持たせる
     const filters = [
-        { key: 'type', buttonId: 'filter-button-type', dropdownId: 'filter-dropdown-type', labelId: 'current-filter-type' },
-        { key: 'year', buttonId: 'filter-button-year', dropdownId: 'filter-dropdown-year', labelId: 'current-filter-year' },
+        { key: 'type', buttonId: 'filter-button-type', dropdownId: 'filter-dropdown-type', defaultLabel: 'Type' },
+        { key: 'year', buttonId: 'filter-button-year', dropdownId: 'filter-dropdown-year', defaultLabel: 'Year' },
     ];
 
     const activeFilters = filters.reduce((acc, { key }) => ({ ...acc, [key]: 'all' }), {});
@@ -43,6 +44,12 @@ function initPublicationFilters() {
         }
     };
 
+    // 「all」ならデフォルト名、選択時は選択名のみを表示
+    const setFilterButtonLabel = (button, defaultLabel, value) => {
+        if (!button) return;
+        button.textContent = value === 'all' ? defaultLabel : value;
+    };
+
     const applyFilters = () => {
         listItems.forEach(item => {
             const typeMatch = activeFilters.type === 'all' || item.dataset.type === activeFilters.type;
@@ -51,11 +58,14 @@ function initPublicationFilters() {
         });
     };
 
-    filters.forEach(({ key, buttonId, dropdownId, labelId }) => {
+    filters.forEach(({ key, buttonId, dropdownId, defaultLabel }) => {
         const button = document.getElementById(buttonId);
         const dropdown = document.getElementById(dropdownId);
-        const label = document.getElementById(labelId);
-        if (!button || !dropdown || !label) return;
+        if (!button || !dropdown) return;
+
+        // 初期ラベル
+        setFilterButtonLabel(button, defaultLabel, 'all');
+        updateButtonClass(button, 'all');
 
         button.addEventListener('click', event => {
             event.stopPropagation();
@@ -69,14 +79,12 @@ function initPublicationFilters() {
                 event.stopPropagation();
                 const selected = option.dataset.filter || 'all';
                 activeFilters[key] = selected;
-                label.textContent = selected === 'all' ? 'All' : selected;
+                setFilterButtonLabel(button, defaultLabel, selected);
                 updateButtonClass(button, selected);
                 closeAllDropdowns();
                 applyFilters();
             });
         });
-
-        updateButtonClass(button, 'all');
     });
 
     document.addEventListener('click', event => {
@@ -87,19 +95,3 @@ function initPublicationFilters() {
 
     applyFilters();
 }
-
-// 言語切り替え時のスクロール位置保存
-document.querySelectorAll('a[href="/"], a[href="/en/"]').forEach(link => {
-    link.addEventListener('click', function(e) {
-        sessionStorage.setItem('scrollPosition', window.scrollY);
-    });
-});
-
-// ページ読み込み時にスクロール位置を復元
-window.addEventListener('load', function() {
-    const scrollPosition = sessionStorage.getItem('scrollPosition');
-    if (scrollPosition !== null) {
-        window.scrollTo(0, parseInt(scrollPosition));
-        sessionStorage.removeItem('scrollPosition');
-    }
-});
