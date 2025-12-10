@@ -26,12 +26,18 @@ function initPublicationFilters() {
         { key: 'year', buttonId: 'filter-button-year', dropdownId: 'filter-dropdown-year', defaultLabel: 'Year' },
     ];
 
+    // Reviewed トグル（dropdownなし）
+    const reviewToggleButton = document.getElementById('filter-button-review');
+    let reviewOnly = false;
+
     const activeFilters = filters.reduce((acc, { key }) => ({ ...acc, [key]: 'all' }), {});
 
     const closeAllDropdowns = () => {
-        filters.forEach(({ dropdownId }) => {
+        filters.forEach(({ buttonId, dropdownId }) => {
             const dropdown = document.getElementById(dropdownId);
+            const button = document.getElementById(buttonId);
             if (dropdown) dropdown.classList.add('hidden');
+            if (button) button.classList.remove('open');
         });
     };
 
@@ -54,7 +60,8 @@ function initPublicationFilters() {
         listItems.forEach(item => {
             const typeMatch = activeFilters.type === 'all' || item.dataset.type === activeFilters.type;
             const yearMatch = activeFilters.year === 'all' || item.dataset.year === activeFilters.year;
-            item.style.display = typeMatch && yearMatch ? '' : 'none';
+            const reviewMatch = !reviewOnly || item.dataset.review === 'Reviewed';
+            item.style.display = typeMatch && yearMatch && reviewMatch ? '' : 'none';
         });
     };
 
@@ -71,7 +78,10 @@ function initPublicationFilters() {
             event.stopPropagation();
             const wasHidden = dropdown.classList.contains('hidden');
             closeAllDropdowns();
-            if (wasHidden) dropdown.classList.remove('hidden');
+            if (wasHidden) {
+                dropdown.classList.remove('hidden');
+                button.classList.add('open');
+            }
         });
 
         dropdown.querySelectorAll('.filter-option').forEach(option => {
@@ -94,4 +104,16 @@ function initPublicationFilters() {
     });
 
     applyFilters();
+
+    if (reviewToggleButton) {
+        reviewToggleButton.addEventListener('click', () => {
+            reviewOnly = !reviewOnly;
+            reviewToggleButton.classList.toggle('active', reviewOnly);
+            reviewToggleButton.classList.toggle('inactive', !reviewOnly);
+            reviewToggleButton.setAttribute('aria-pressed', String(reviewOnly));
+            applyFilters();
+        });
+        // 初期状態はOFF（None）なので灰色に
+        reviewToggleButton.classList.add('inactive');
+    }
 }

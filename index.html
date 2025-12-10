@@ -40,7 +40,7 @@
                 </div>
                 <div class="profile-text">
                     <div class="profile-name-row">
-                        <h3 class="profile-name">鈴木 翔 ｜ Sho Suzuki</h3>
+                        <h3 class="profile-name">鈴木 翔 ｜ <span lang="en">Sho Suzuki</span></h3>
                         <a class="social-link" href="https://github.com/shos-03">
                             <img src="/images/github-mark.svg" alt="GitHub" class="social-icon">
                         </a>
@@ -48,19 +48,19 @@
                             <img src="/images/google-scholar.svg" alt="Google Scholar" class="social-icon">
                         </a>
                     </div>
-                    <p>
-                        is a fourth-year student at the School of Advanced Science and Engineering, Waseda University. He belongs to <a href="https://wasalab.w.waseda.jp/index.html">Wasa Research Group</a>.
-                        He is engaged in research on the mechanisms of the electricity market based on knowledge of <b>control engineering</b>.
+                    <p class="en">
+                        is a fourth-year student at the School of Advanced Science and Engineering, Waseda Univ. He belongs to <a href="https://wasalab.w.waseda.jp/index.html">Wasa Research Group</a>.
+                        He conducts research on electricity-market mechanisms grounded in <b>control engineering</b>.
                     </p>
                     <div class="education-grid">
                         <div class="education-row">
                             <span class="edu-emoji"><i class="fa-solid fa-graduation-cap"></i></span>
-                            <span class="edu-term">2022.4 - present</span>
-                            <span class="edu-school">Waseda Univ., School of Advanced Science and Engineering, Dept. of Electrical Engineering and Bioscience</span>
+                            <span class="edu-term">Apr. 2022 - present</span>
+                            <span class="edu-school"><b>BEng.</b> in Electrical Engineering and Bioscience, Waseda Univ.</span>
                         </div>
                         <div class="education-row">
                             <span class="edu-emoji"><i class="fa-solid fa-school"></i></span>
-                            <span class="edu-term">2019.4 - 2022.3</span>
+                            <span class="edu-term">Apr. 2019 - Mar. 2022</span>
                             <span class="edu-school">Kaisei High School</span>
                         </div>
                     </div>
@@ -72,29 +72,35 @@
             <div class="section-header">
                 <h1 class="section-title">Publications</h1>
                 <div class="filter-container">
-                    <button id="filter-button-type" class="filter-button">Type : <span id="current-filter-type">All</span></button>
+                    <button id="filter-button-type" class="filter-button">
+                        <span id="current-filter-type">All</span></button>
                     <div id="filter-dropdown-type" class="filter-dropdown hidden">
                         <button class="filter-option" data-filter="all">All</button>
                         <button class="filter-option" data-filter="Domestic Conf.">Domestic Conf.</button>
+                        <button class="filter-option" data-filter="Int. Conf.">Int. Conf.</button>
+                        <button class="filter-option" data-filter="Journal">Journal</button>
+                        <button class="filter-option" data-filter="Theses">Theses</button>
                     </div>
 
-                    <button id="filter-button-year" class="filter-button">Year : <span id="current-filter-year">All</span></button>
+                    <button id="filter-button-year" class="filter-button"><span id="current-filter-year">All</span></button>
                     <div id="filter-dropdown-year" class="filter-dropdown hidden">
                         <button class="filter-option" data-filter="all">All</button>
                         <button class="filter-option" data-filter="2025">2025</button>
                     </div>
+
+                    <button id="filter-button-review" class="filter-button no-caret" aria-pressed="false">Reviewed</button>
                 </div>
             </div>
 
             <ol id="publications-list">
                 <li data-type="Domestic Conf." data-year="2025" data-review="None">
-                    <span><b>鈴木</b>, 和佐: 発電事業者による蓄電池所有が電力市場に及ぼす経済・環境的影響; 第16回横幹連合コンファレンス, 2025.&ensp;
+                    <span><b>鈴木</b>, 和佐: 発電事業者による蓄電池所有が電力市場に及ぼす経済・環境的影響; 第<span lang="en">16</span>回横幹連合コンファレンス, <span lang="en">Dec. 2025</span>&ensp;
                     <span class="badge">Domestic Conf.</span>
                     </span>
                 </li>
                 <li data-type="Domestic Conf." data-year="2025" data-review="None">
-                    <span><b>鈴木</b>, 和佐: 電力市場における蓄電池の発電事業者所有形態と社会厚生に関する分析; 第68回自動制御連合講演会, 2025.&ensp;
-                    <a href="https://doi.org/10.11511/jacc.68.0_1330"><img src="/images/J-STAGE.png" alt="J-STAGE link"></a>
+                    <span><b>鈴木</b>, 和佐: 電力市場における蓄電池の発電事業者所有形態と社会厚生に関する分析; 第<span lang="en">68</span>回自動制御連合講演会, <span lang="en">Nov. 2025</span>&ensp;
+                    <a href="https://doi.org/10.11511/jacc.68.0_1330"><img src="/images/J-STAGE.png" alt="J-STAGE link"></a>&ensp;
                     <span class="badge">Domestic Conf.</span>
                     </span>
                 </li>
@@ -107,117 +113,115 @@
                 <div class="image-container" data-tags="2024 blue">
                     <img src="/images/IMG_0465.jpeg" alt="Yamanashi, 2024.2">
                     <div class="overlay">
-                        <p class="caption">Yamanashi, 2024. 2</p>
+                        <p class="caption">Yamanashi, Feb. 2024</p>
                     </div>
                 </div>
                 <div class="image-container" data-tags="2024 geometric">
                     <img src="/images/DSC_0008.jpeg" alt="Shinjuku, 2024.4">
                     <div class="overlay">
-                        <p class="caption">Shinjuku, 2024. 4</p>
+                        <p class="caption">Shinjuku, Apr. 2024</p>
                     </div>
                 </div>
                 <div class="image-container" data-tags="2024">
                     <img src="/images/DSC_0143.jpeg" alt="Akihabara, 2024.6">
                     <div class="overlay">
-                        <p class="caption">Akihabara, 2024. 6</p>
+                        <p class="caption">Akihabara, Jun. 2024</p>
                     </div>
                 </div>
                 <div class="image-container" data-tags="2024 geometric">
                     <img src="/images/DSC_0565.jpeg" alt="Azabudai, 2024.8">
                     <div class="overlay">
-                        <p class="caption">Azabudai, 2024. 8</p>
+                        <p class="caption">Azabudai, Aug. 2024</p>
                     </div>
                 </div>
                 <div class="image-container" data-tags="2024">
                     <img src="/images/DSC_0761.jpeg" alt="Sendai, 2024.8">
                     <div class="overlay">
-                        <p class="caption">Sendai, 2024. 8</p>
+                        <p class="caption">Sendai, Aug. 2024</p>
                     </div>
                 </div>
                 <div class="image-container" data-tags="2024 blue">
                     <img src="/images/DSC_0777.jpeg" alt="Matsushima, 2024.8">
                     <div class="overlay">
-                        <p class="caption">Matsushima, 2024. 8</p>
+                        <p class="caption">Matsushima, Aug. 2024</p>
                     </div>
                 </div>
                 <div class="image-container" data-tags="2024 blue animals">
                     <img src="/images/DSC_1015.jpeg" alt="Sapporo, 2024.8">
                     <div class="overlay">
-                        <p class="caption">Sapporo, 2024. 8</p>
+                        <p class="caption">Sapporo, Aug. 2024</p>
                     </div>
                 </div>
                 <div class="image-container" data-tags="2024 blue">
                     <img src="/images/DSC_1041.jpeg" alt="Yuzawa, 2024.9">
                     <div class="overlay">
-                        <p class="caption">Yuzawa, 2024. 9</p>
+                        <p class="caption">Yuzawa, Sep. 2024</p>
                     </div>
                 </div>
                 <div class="image-container" data-tags="2024">
                     <img src="/images/IMG_2293.jpeg" alt="Yuzawa, 2024.9">
                     <div class="overlay">
-                        <p class="caption">Yuzawa, 2024. 9</p>
+                        <p class="caption">Yuzawa, Sep. 2024</p>
                     </div>
                 </div>
                 <div class="image-container" data-tags="2024">
                     <img src="/images/DSC_1082.jpeg" alt="Tokamachi, 2024.9">
                     <div class="overlay">
-                        <p class="caption">Tokamachi, 2024. 9</p>
+                        <p class="caption">Tokamachi, Sep. 2024</p>
                     </div>
                 </div>
                 <div class="image-container" data-tags="2024 overseas">
                     <img src="/images/DSC_1146.jpeg" alt="Samarkand, 2024.9">
                     <div class="overlay">
-                        <p class="caption">Samarkand, 2024. 9</p>
+                        <p class="caption">Samarkand, Sep. 2024</p>
                     </div>
                 </div>
                 <div class="image-container" data-tags="2025 overseas">
                     <img src="/images/IMG_5745.jpeg" alt="London, 2025.3">
                     <div class="overlay">
-                        <p class="caption">London, 2025. 3</p>
+                        <p class="caption">London, Mar. 2025</p>
                     </div>
                 </div>
                 <div class="image-container" data-tags="2025 overseas">
                     <img src="/images/IMG_5783.jpeg" alt="London, 2025.3">
                     <div class="overlay">
-                        <p class="caption">London, 2025. 3</p>
+                        <p class="caption">London, Mar. 2025</p>
                     </div>
                 </div>
                 <div class="image-container" data-tags="2025 animals">
                     <img src="/images/DSC_3342.jpeg" alt="Ueno, 2025.2">
                     <div class="overlay">
-                        <p class="caption">Ueno, 2025. 2</p>
+                        <p class="caption">Ueno, Feb. 2025</p>
                     </div>
                 </div>
                 <div class="image-container" data-tags="2025 blue">
                     <img src="/images/DSC_3290.jpeg" alt="Obihiro, 2025.2">
                     <div class="overlay">
-                        <p class="caption">Obihiro, 2025. 2</p>
+                        <p class="caption">Obihiro, Feb. 2025</p>
                     </div>
                 </div>
                 <div class="image-container" data-tags="2024 geometric">
                     <img src="/images/DSC_3036.jpeg" alt="Haneda, 2024.12">
                     <div class="overlay">
-                        <p class="caption">Haneda, 2024. 12</p>
+                        <p class="caption">Haneda, Dec. 2024</p>
                     </div>
                 </div>
                 <div class="image-container" data-tags="2025 blue">
                     <img src="/images/IMG_0085.jpeg" alt="Osaka, 2025.4">
                     <div class="overlay">
-                        <p class="caption">Osaka, 2025. 4</p>
+                        <p class="caption">Osaka, Apr. 2025</p>
                     </div>
                 </div>
                 <div class="image-container" data-tags="2025 blue">
                     <img src="/images/DSC_4297.jpeg" alt="Suginami, 2025.5">
                     <div class="overlay">
-                        <p class="caption">Suginami, 2025. 5</p>
+                        <p class="caption">Suginami, May 2025</p>
                     </div>
                 </div>
             </div>
         </section>
-
         <p class="copy-right">© 2025 SUZUKI, Sho</p>
     </main>
     <script src="/script.js"></script>
 </body>
-
 </html>
