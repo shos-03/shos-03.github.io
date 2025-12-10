@@ -200,30 +200,6 @@ a:hover {
     border-radius: 0.8rem;
 }
 
-a.badge {
-    display: inline-flex;
-    align-items: center;
-    padding: 1px 4px;
-    font-size: 0.9rem;
-    line-height: 1.2;
-    height: fit-content;
-    white-space: nowrap;
-    color: #33A6BB;
-    background-color: transparent;
-    border: 1px solid #33A6BB;
-    border-radius: 3px;
-    text-decoration: none;
-}
-
-a.badge:visited {
-    color: #33A6BB;
-}
-
-a.badge:hover {
-    color: #fff;
-    background-color: #33A6BB;
-}
-
 .gray {
     color: #ccc;
     border-color: #ccc;
@@ -274,11 +250,6 @@ li::before {
     margin-top: 1.8rem;
     text-align: center;
     color: #999;
-}
-
-.aks {
-    display: inline-block;
-    color: #666;
 }
 
 /* Photo grid */
@@ -413,6 +384,7 @@ li::before {
 }
 
 .filter-dropdown {
+    font-size: 1rem;
     position: absolute;
     top: 100%;
     left: 20%;
@@ -486,11 +458,6 @@ li::before {
 
 .edu-school .no-break {
     white-space: nowrap;
-}
-
-.education-row img {
-    width: auto;
-    height: 1rem;
 }
 
 /* Responsive */
