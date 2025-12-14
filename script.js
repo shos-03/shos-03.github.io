@@ -22,8 +22,8 @@ function initPublicationFilters() {
 
     // defaultLabel を持たせる
     const filters = [
-        { key: 'type', buttonId: 'filter-button-type', dropdownId: 'filter-dropdown-type', defaultLabel: 'Type' },
-        { key: 'year', buttonId: 'filter-button-year', dropdownId: 'filter-dropdown-year', defaultLabel: 'Year' },
+        { key: 'type', buttonId: 'filter-button-type', dropdownId: 'filter-dropdown-type', defaultLabel: 'TYPE' },
+        { key: 'year', buttonId: 'filter-button-year', dropdownId: 'filter-dropdown-year', defaultLabel: 'YEAR' },
     ];
 
     // Reviewed トグル（dropdownなし）

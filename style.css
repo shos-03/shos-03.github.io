@@ -390,7 +390,7 @@ li::before {
     top: 100%;
     left: 20%;
     transform: translateX(-50%);
-    width: 140px;
+    width: 150px;
     margin-top: 0.5rem;
     background: rgba(255, 255, 255, 0.8);
     backdrop-filter: blur(2px);
