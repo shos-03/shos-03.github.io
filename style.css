@@ -14,13 +14,13 @@ html {
 body {
     display: flex;
     justify-content: center;
-    padding: 5rem 2% 0;
+    padding: 4rem max(1rem, 2%) 0;
 }
 
 .page {
     display: flex;
     flex-direction: column;
-    gap: 2.5rem;
+    gap: 2rem;
     width: min(1200px, 100%);
 }
 
@@ -45,6 +45,9 @@ h3 {
 p.en,
 :lang(en) {
     font-size: 1.1em; /* 欧文を1.1倍に */
+    hyphens: auto;
+    -webkit-hyphens: auto;
+    -ms-hyphens: auto;
 }
 
 b {
@@ -474,10 +477,6 @@ li::before {
 @media (max-width: 768px) {
     html {
         font-size: 14px;
-    }
-
-    body {
-        padding: 4rem 1rem;
     }
 
     /* 見出しとボタンの間を狭く */
