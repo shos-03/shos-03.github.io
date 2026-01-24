@@ -30,7 +30,6 @@ h1 {
     padding-bottom: 1rem;
     font-size: 2rem;
     font-weight: 300;
-    text-align: left;
     color: #33A6BB;
 }
 
@@ -169,7 +168,7 @@ a:hover {
 
 .section-header {
     display: flex;
-    align-items: flex-end;
+    align-items: baseline;
     justify-content: space-between;
     gap: 1.5rem;
     flex-wrap: wrap;
@@ -177,6 +176,50 @@ a:hover {
 
 .section-title {
     margin: 0;
+}
+
+/* News grid */
+.news-grid {
+    display: grid;
+    grid-template-columns: 4.5rem 1fr;
+    gap: 0.4rem 1.2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.news-cell {
+    padding: 0.2rem 0;
+}
+
+.news-date {
+    white-space: nowrap;
+    font-weight: 500;
+    color: #aaa;
+}
+
+.news-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+    padding: 1px 0.7rem;
+    font-size: 0.95rem;
+    font-family: futura-pt, Hiragino Sans, sans-serif;
+    color: #33A6BB;
+    background-color: #fff;
+    border: 1px solid #33A6BB;
+    border-radius: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.news-toggle:hover {
+    color: #fff;
+    background-color: #33A6BB;
+}
+
+.is-hidden {
+    display: none;
 }
 
 /* Social links */
@@ -227,7 +270,7 @@ a:hover {
 /* Lists */
 ol {
     list-style-type: none;
-    counter-reset: list-counter 3;
+    counter-reset: list-counter 4;
     max-width: 1200px;
     margin: 0 auto;
     padding-left: 0;
@@ -396,6 +439,7 @@ li::before {
     border-color: #33A6BB;
 }
 
+
 .filter-dropdown {
     font-size: 1rem;
     position: absolute;
@@ -450,16 +494,19 @@ li::before {
 
 .education-row {
     display: grid;
-    grid-template-columns: 2rem 9.5rem 1fr;
+    grid-template-columns: 2rem 10.5rem 1fr;
     align-items: start;
 }
 
 .edu-emoji {
+    color: #aaa;
     width: 1.5rem;
     text-align: center;
 }
 
 .edu-term {
+    color: #aaa;
+    font-weight: 500;
     white-space: nowrap;
     font-size: 0.95rem;
 }
@@ -485,11 +532,36 @@ li::before {
         align-items: flex-start;
         gap: 0.1rem;
     }
+
+    #news .section-header {
+        flex-direction: row;
+        align-items: baseline;
+        flex-wrap: nowrap;
+        gap: 1rem;
+    }
+
+    #publications .section-header {
+        flex-direction: row;
+        align-items: baseline;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+    
     /* ボタンとリストの間を広く */
     .filter-container {
         justify-content: flex-start;
         width: 100%;
         margin-bottom: 1.5rem;
+    }
+
+    #news .filter-container {
+        width: auto;
+        margin-bottom: 0;
+    }
+
+    #publications .filter-container {
+        width: auto;
+        margin-bottom: 0;
     }
     .grid-container {
         grid-template-columns: repeat(2, 1fr);

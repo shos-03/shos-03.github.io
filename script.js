@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     shuffleGrid('.grid-container');
     initPublicationFilters();
+    initNewsToggle();
 });
 
 function shuffleGrid(selector) {
@@ -116,4 +117,45 @@ function initPublicationFilters() {
         // 初期状態はOFF（None）なので灰色に
         reviewToggleButton.classList.add('inactive');
     }
+}
+
+function initNewsToggle() {
+    const newsSection = document.getElementById('news');
+    if (!newsSection) return;
+
+    const newsItems = Array.from(newsSection.querySelectorAll('.news-grid'));
+    const toggleButton = newsSection.querySelector('.filter-button');
+    const visibleCount = 3;
+    const labelText = 'SHOW ALL';
+
+    if (!toggleButton || newsItems.length <= visibleCount) {
+        if (toggleButton) toggleButton.classList.add('is-hidden');
+        return;
+    }
+
+    newsItems.slice(visibleCount).forEach(item => item.classList.add('is-hidden'));
+
+    let showAll = false;
+    toggleButton.classList.add('inactive');
+    toggleButton.textContent = labelText;
+    toggleButton.setAttribute('aria-pressed', 'false');
+
+    const updateNewsVisibility = () => {
+        if (showAll) {
+            newsItems.forEach(item => item.classList.remove('is-hidden'));
+        } else {
+            newsItems.forEach((item, index) => {
+                item.classList.toggle('is-hidden', index >= visibleCount);
+            });
+        }
+    };
+
+    toggleButton.addEventListener('click', () => {
+        showAll = !showAll;
+        toggleButton.classList.toggle('active', showAll);
+        toggleButton.classList.toggle('inactive', !showAll);
+        toggleButton.setAttribute('aria-pressed', String(showAll));
+        toggleButton.textContent = labelText;
+        updateNewsVisibility();
+    });
 }
