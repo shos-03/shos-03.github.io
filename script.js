@@ -9,8 +9,11 @@ document.addEventListener('DOMContentLoaded', () => {
     shuffleGrid(SELECTORS.grid);
     loadExternalContent().then(() => {
         initPublicationFilters();
+        initPublicationAbstractToggles();
+        syncPublicationMetaSpacing();
         initNewsToggle();
     });
+    window.addEventListener('resize', syncPublicationMetaSpacing);
 });
 
 function shuffleGrid(selector) {
@@ -110,6 +113,50 @@ function initPublicationFilters() {
     }
 
     applyFilters();
+}
+
+function initPublicationAbstractToggles() {
+    const publicationsList = document.querySelector(SELECTORS.publicationsList);
+    if (!publicationsList) return;
+
+    publicationsList.querySelectorAll('.publication-item').forEach(item => {
+        const button = item.querySelector('.abstract-toggle');
+        const abstract = item.querySelector('.publication-abstract');
+        if (!button || !abstract) return;
+        button.textContent = 'SHOW ABS';
+        button.setAttribute('aria-expanded', 'false');
+        button.classList.add('inactive');
+        abstract.classList.add('is-hidden');
+    });
+
+    publicationsList.addEventListener('click', event => {
+        const button = event.target.closest('.abstract-toggle');
+        if (!button || !publicationsList.contains(button)) return;
+
+        const item = button.closest('.publication-item');
+        const abstract = item ? item.querySelector('.publication-abstract') : null;
+        if (!abstract) return;
+
+        const wasHidden = abstract.classList.contains('is-hidden');
+        abstract.classList.toggle('is-hidden');
+        button.textContent = 'SHOW ABS';
+        button.classList.toggle('active', wasHidden);
+        button.classList.toggle('inactive', !wasHidden);
+        button.setAttribute('aria-expanded', String(wasHidden));
+    });
+}
+
+function syncPublicationMetaSpacing() {
+    const publicationsList = document.querySelector(SELECTORS.publicationsList);
+    if (!publicationsList) return;
+
+    publicationsList.querySelectorAll('.publication-meta').forEach(meta => {
+        const actions = meta.querySelector('.publication-meta-actions');
+        if (!actions) return;
+        const spacing = 8;
+        const width = actions.offsetWidth + spacing;
+        meta.style.setProperty('--meta-actions-width', `${width}px`);
+    });
 }
 
 function initNewsToggle() {
