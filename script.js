@@ -1,7 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
     shuffleGrid('.grid-container');
-    initPublicationFilters();
-    initNewsToggle();
+    loadExternalContent().then(() => {
+        initPublicationFilters();
+        initNewsToggle();
+    });
 });
 
 function shuffleGrid(selector) {
@@ -158,4 +160,111 @@ function initNewsToggle() {
         toggleButton.textContent = labelText;
         updateNewsVisibility();
     });
+}
+
+function loadExternalContent() {
+    const loadTargets = [
+        { selector: '#news-items', url: '/news.html' },
+        { selector: '#publications-list', url: '/publications.html' },
+    ];
+
+    return Promise.all(loadTargets.map(({ selector, url }) => loadHtmlInto(selector, url)))
+        .then(() => {
+            applyLangEnToAlnum(document.getElementById('news'));
+            applyLangEnToAlnum(document.getElementById('publications'));
+            updatePublicationCounter();
+        })
+        .catch(error => {
+            console.warn('Failed to load external content:', error);
+        });
+}
+
+function loadHtmlInto(selector, url) {
+    const target = document.querySelector(selector);
+    if (!target) return Promise.resolve();
+
+    return fetch(url, { cache: 'no-store' })
+        .then(response => {
+            if (!response.ok) throw new Error(`Failed to load ${url}`);
+            return response.text();
+        })
+        .then(html => {
+            target.innerHTML = html;
+        });
+}
+
+function applyLangEnToAlnum(root) {
+    if (!root) return;
+
+    const blockedTags = new Set(['SCRIPT', 'STYLE', 'CODE', 'PRE', 'SVG']);
+    const englishPattern = /[A-Za-z0-9]+(?:[A-Za-z0-9 .,/()&+:-]*[A-Za-z0-9])?/g;
+    const englishTest = /[A-Za-z0-9]+(?:[A-Za-z0-9 .,/()&+:-]*[A-Za-z0-9])?/;
+
+    const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+        acceptNode(node) {
+            const parent = node.parentElement;
+            if (!parent) return NodeFilter.FILTER_REJECT;
+            if (blockedTags.has(parent.tagName)) return NodeFilter.FILTER_REJECT;
+            if (hasLangEnAncestor(parent, root)) return NodeFilter.FILTER_REJECT;
+            if (!node.nodeValue || !englishTest.test(node.nodeValue)) return NodeFilter.FILTER_REJECT;
+            return NodeFilter.FILTER_ACCEPT;
+        },
+    });
+
+    const nodes = [];
+    while (walker.nextNode()) {
+        nodes.push(walker.currentNode);
+    }
+
+    nodes.forEach(node => wrapEnglishText(node, englishPattern));
+}
+
+function hasLangEnAncestor(element, root) {
+    let current = element;
+    while (current && current !== root) {
+        if (current.getAttribute('lang') === 'en') return true;
+        current = current.parentElement;
+    }
+    return false;
+}
+
+function wrapEnglishText(node, pattern) {
+    const text = node.nodeValue;
+    if (!text) return;
+
+    pattern.lastIndex = 0;
+    const fragments = document.createDocumentFragment();
+    let lastIndex = 0;
+    let match = null;
+
+    while ((match = pattern.exec(text)) !== null) {
+        const matchText = match[0];
+        const startIndex = match.index;
+        const endIndex = startIndex + matchText.length;
+
+        if (startIndex > lastIndex) {
+            fragments.appendChild(document.createTextNode(text.slice(lastIndex, startIndex)));
+        }
+
+        const span = document.createElement('span');
+        span.setAttribute('lang', 'en');
+        span.textContent = matchText;
+        fragments.appendChild(span);
+
+        lastIndex = endIndex;
+    }
+
+    if (lastIndex < text.length) {
+        fragments.appendChild(document.createTextNode(text.slice(lastIndex)));
+    }
+
+    node.parentNode.replaceChild(fragments, node);
+}
+
+function updatePublicationCounter() {
+    const list = document.getElementById('publications-list');
+    if (!list) return;
+
+    const items = list.querySelectorAll('li');
+    list.style.setProperty('--list-count', String(items.length + 1));
 }

@@ -270,20 +270,23 @@ a:hover {
 /* Lists */
 ol {
     list-style-type: none;
-    counter-reset: list-counter 4;
     max-width: 1200px;
     margin: 0 auto;
     padding-left: 0;
 }
 
-li {
+#publications-list {
+    counter-reset: list-counter var(--list-count, 1);
+}
+
+#publications-list li {
     display: flex;
     align-items: baseline;
     counter-increment: list-counter -1;
     margin-bottom: 0.6rem;
 }
 
-li::before {
+#publications-list li::before {
     content: "[" counter(list-counter) "] ";
     flex-shrink: 0;
     margin-right: 0.5rem;
