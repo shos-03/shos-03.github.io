@@ -6,18 +6,18 @@
     <link rel="icon" href="/favicon.ico" />
     <link rel="stylesheet" href="/style.css">
     <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
     />
     <script>
-    (function(d) {
-        var config = {
-        kitId: 'jef1tyy',
-        scriptTimeout: 3000,
-        async: true
-        },
-        h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
-    })(document);
+        (function(d) {
+            var config = {
+                kitId: 'jef1tyy',
+                scriptTimeout: 3000,
+                async: true
+            },
+            h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
+        })(document);
     </script>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Sho SUZUKI</title>
@@ -45,13 +45,6 @@
                         His research interests include electricity market mechanisms grounded in <b>control engineering</b>.
                     </p>
                     <div class="education-grid">
-                        <!--
-                            <div class="education-row">
-                            <span class="edu-emoji"><i class="fa-solid fa-graduation-cap"></i></span>
-                            <span class="edu-term">Apr. 2026 &ndash; present.</span>
-                            <span class="edu-school"><b>MEng</b> in Electrical Engineering and Bioscience, Waseda Univ.</span>
-                        </div>
-                        -->
                         <div class="education-row">
                             <span class="edu-emoji"><i class="fa-solid fa-graduation-cap"></i></span>
                             <span class="edu-term">Apr. 2022 &ndash; Mar. 2026</span>
@@ -71,9 +64,7 @@
             <div class="section-header">
                 <h1 class="section-title">News</h1>
                 <div class="filter-container">
-                <!--
                 <button class="filter-button no-caret" aria-pressed="false">SHOW ALL</button>
-                -->
                 </div>
             </div>
             <div id="news-items"></div>
@@ -97,13 +88,15 @@
                     <div id="filter-dropdown-year" class="filter-dropdown hidden">
                         <button class="filter-option" data-filter="all">ALL</button>
                         <button class="filter-option" data-filter="2025">2025</button>
+                        <button class="filter-option" data-filter="2026">2026</button>
+
                     </div>
 
                     <button id="filter-button-review" class="filter-button no-caret" aria-pressed="false">REVIEWED</button>
                 </div>
             </div>
 
-            <ol id="publications-list"></ol>
+            <div id="publications-list"></div>
         </section>
 
         <p class="copy-right">© 2026 SUZUKI, Sho</p>

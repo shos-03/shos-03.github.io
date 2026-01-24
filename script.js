@@ -1,5 +1,12 @@
+const SELECTORS = {
+    grid: '.grid-container',
+    newsSection: '#news',
+    publicationsSection: '#publications',
+    publicationsList: '#publications-list',
+};
+
 document.addEventListener('DOMContentLoaded', () => {
-    shuffleGrid('.grid-container');
+    shuffleGrid(SELECTORS.grid);
     loadExternalContent().then(() => {
         initPublicationFilters();
         initNewsToggle();
@@ -17,47 +24,20 @@ function shuffleGrid(selector) {
 }
 
 function initPublicationFilters() {
-    const publicationsList = document.getElementById('publications-list');
+    const publicationsList = document.querySelector(SELECTORS.publicationsList);
     if (!publicationsList) return;
 
-    const filterContainer = document.querySelector('.filter-container');
-    const listItems = Array.from(publicationsList.querySelectorAll('li'));
+    const filterContainer = document.querySelector(`${SELECTORS.publicationsSection} .filter-container`);
+    const listItems = Array.from(publicationsList.querySelectorAll('.publication-item'));
 
-    // defaultLabel を持たせる
     const filters = [
         { key: 'type', buttonId: 'filter-button-type', dropdownId: 'filter-dropdown-type', defaultLabel: 'TYPE' },
         { key: 'year', buttonId: 'filter-button-year', dropdownId: 'filter-dropdown-year', defaultLabel: 'YEAR' },
     ];
 
-    // Reviewed トグル（dropdownなし）
     const reviewToggleButton = document.getElementById('filter-button-review');
-    let reviewOnly = false;
-
     const activeFilters = filters.reduce((acc, { key }) => ({ ...acc, [key]: 'all' }), {});
-
-    const closeAllDropdowns = () => {
-        filters.forEach(({ buttonId, dropdownId }) => {
-            const dropdown = document.getElementById(dropdownId);
-            const button = document.getElementById(buttonId);
-            if (dropdown) dropdown.classList.add('hidden');
-            if (button) button.classList.remove('open');
-        });
-    };
-
-    const updateButtonClass = (button, filter) => {
-        if (!button) return;
-        if (filter === 'all') {
-            button.classList.add('all');
-        } else {
-            button.classList.remove('all');
-        }
-    };
-
-    // 「all」ならデフォルト名、選択時は選択名のみを表示
-    const setFilterButtonLabel = (button, defaultLabel, value) => {
-        if (!button) return;
-        button.textContent = value === 'all' ? defaultLabel : value;
-    };
+    let reviewOnly = false;
 
     const applyFilters = () => {
         listItems.forEach(item => {
@@ -68,14 +48,27 @@ function initPublicationFilters() {
         });
     };
 
+    const closeAllDropdowns = () => {
+        filters.forEach(({ buttonId, dropdownId }) => {
+            const dropdown = document.getElementById(dropdownId);
+            const button = document.getElementById(buttonId);
+            if (dropdown) dropdown.classList.add('hidden');
+            if (button) button.classList.remove('open');
+        });
+    };
+
+    const setButtonLabel = (button, defaultLabel, value) => {
+        if (!button) return;
+        button.textContent = value === 'all' ? defaultLabel : value;
+        button.classList.toggle('all', value === 'all');
+    };
+
     filters.forEach(({ key, buttonId, dropdownId, defaultLabel }) => {
         const button = document.getElementById(buttonId);
         const dropdown = document.getElementById(dropdownId);
         if (!button || !dropdown) return;
 
-        // 初期ラベル
-        setFilterButtonLabel(button, defaultLabel, 'all');
-        updateButtonClass(button, 'all');
+        setButtonLabel(button, defaultLabel, 'all');
 
         button.addEventListener('click', event => {
             event.stopPropagation();
@@ -92,8 +85,7 @@ function initPublicationFilters() {
                 event.stopPropagation();
                 const selected = option.dataset.filter || 'all';
                 activeFilters[key] = selected;
-                setFilterButtonLabel(button, defaultLabel, selected);
-                updateButtonClass(button, selected);
+                setButtonLabel(button, defaultLabel, selected);
                 closeAllDropdowns();
                 applyFilters();
             });
@@ -106,9 +98,8 @@ function initPublicationFilters() {
         }
     });
 
-    applyFilters();
-
     if (reviewToggleButton) {
+        reviewToggleButton.classList.add('inactive');
         reviewToggleButton.addEventListener('click', () => {
             reviewOnly = !reviewOnly;
             reviewToggleButton.classList.toggle('active', reviewOnly);
@@ -116,18 +107,18 @@ function initPublicationFilters() {
             reviewToggleButton.setAttribute('aria-pressed', String(reviewOnly));
             applyFilters();
         });
-        // 初期状態はOFF（None）なので灰色に
-        reviewToggleButton.classList.add('inactive');
     }
+
+    applyFilters();
 }
 
 function initNewsToggle() {
-    const newsSection = document.getElementById('news');
+    const newsSection = document.querySelector(SELECTORS.newsSection);
     if (!newsSection) return;
 
     const newsItems = Array.from(newsSection.querySelectorAll('.news-grid'));
     const toggleButton = newsSection.querySelector('.filter-button');
-    const visibleCount = 3;
+    const visibleCount = 1;
     const labelText = 'SHOW ALL';
 
     if (!toggleButton || newsItems.length <= visibleCount) {
@@ -143,13 +134,9 @@ function initNewsToggle() {
     toggleButton.setAttribute('aria-pressed', 'false');
 
     const updateNewsVisibility = () => {
-        if (showAll) {
-            newsItems.forEach(item => item.classList.remove('is-hidden'));
-        } else {
-            newsItems.forEach((item, index) => {
-                item.classList.toggle('is-hidden', index >= visibleCount);
-            });
-        }
+        newsItems.forEach((item, index) => {
+            item.classList.toggle('is-hidden', !showAll && index >= visibleCount);
+        });
     };
 
     toggleButton.addEventListener('click', () => {
@@ -170,9 +157,8 @@ function loadExternalContent() {
 
     return Promise.all(loadTargets.map(({ selector, url }) => loadHtmlInto(selector, url)))
         .then(() => {
-            applyLangEnToAlnum(document.getElementById('news'));
-            applyLangEnToAlnum(document.getElementById('publications'));
-            updatePublicationCounter();
+            applyLangEnToAlnum(document.querySelector(SELECTORS.newsSection));
+            applyLangEnToAlnum(document.querySelector(SELECTORS.publicationsSection));
         })
         .catch(error => {
             console.warn('Failed to load external content:', error);
@@ -259,12 +245,4 @@ function wrapEnglishText(node, pattern) {
     }
 
     node.parentNode.replaceChild(fragments, node);
-}
-
-function updatePublicationCounter() {
-    const list = document.getElementById('publications-list');
-    if (!list) return;
-
-    const items = list.querySelectorAll('li');
-    list.style.setProperty('--list-count', String(items.length + 1));
 }
