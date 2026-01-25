@@ -4,6 +4,11 @@ const SELECTORS = {
     publicationsSection: '#publications',
     publicationsList: '#publications-list',
 };
+const ABSTRACT_TOGGLE_MEDIA_QUERY = '(max-width: 768px)';
+const ABSTRACT_TOGGLE_LABELS = {
+    narrow: 'ABS',
+    wide: 'SHOW ABS',
+};
 
 document.addEventListener('DOMContentLoaded', () => {
     shuffleGrid(SELECTORS.grid);
@@ -119,11 +124,20 @@ function initPublicationAbstractToggles() {
     const publicationsList = document.querySelector(SELECTORS.publicationsList);
     if (!publicationsList) return;
 
+    const mediaQuery = window.matchMedia(ABSTRACT_TOGGLE_MEDIA_QUERY);
+    const getLabel = () => (mediaQuery.matches ? ABSTRACT_TOGGLE_LABELS.narrow : ABSTRACT_TOGGLE_LABELS.wide);
+    const updateLabels = () => {
+        const label = getLabel();
+        publicationsList.querySelectorAll('.abstract-toggle').forEach(toggle => {
+            toggle.textContent = label;
+        });
+    };
+
     publicationsList.querySelectorAll('.publication-item').forEach(item => {
         const button = item.querySelector('.abstract-toggle');
         const abstract = item.querySelector('.publication-abstract');
         if (!button || !abstract) return;
-        button.textContent = 'SHOW ABS';
+        button.textContent = getLabel();
         button.setAttribute('aria-expanded', 'false');
         button.classList.add('inactive');
         abstract.classList.add('is-hidden');
@@ -139,11 +153,17 @@ function initPublicationAbstractToggles() {
 
         const wasHidden = abstract.classList.contains('is-hidden');
         abstract.classList.toggle('is-hidden');
-        button.textContent = 'SHOW ABS';
+        button.textContent = getLabel();
         button.classList.toggle('active', wasHidden);
         button.classList.toggle('inactive', !wasHidden);
         button.setAttribute('aria-expanded', String(wasHidden));
     });
+
+    if (typeof mediaQuery.addEventListener === 'function') {
+        mediaQuery.addEventListener('change', updateLabels);
+    } else if (typeof mediaQuery.addListener === 'function') {
+        mediaQuery.addListener(updateLabels);
+    }
 }
 
 function syncPublicationMetaSpacing() {
