@@ -208,6 +208,7 @@ a:hover {
 .news-caption {
     grid-area: caption;
     font-size: 0.9rem;
+    line-height: 150%;
 }
 
 .news-toggle,
@@ -332,6 +333,7 @@ a:hover {
 }
 
 #publications-list .publication-meta {
+    line-height: 150%;
     grid-column: 2;
     grid-row: 2;
     position: relative;
