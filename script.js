@@ -185,7 +185,7 @@ function initNewsToggle() {
 
     const newsItems = Array.from(newsSection.querySelectorAll('.news-grid'));
     const toggleButton = newsSection.querySelector('.filter-button');
-    const visibleCount = 1;
+    const visibleCount = 2;
     const labelText = 'SHOW ALL';
 
     if (!toggleButton || newsItems.length <= visibleCount) {
