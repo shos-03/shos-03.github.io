@@ -90,6 +90,7 @@ a:hover {
 
 /* Anchor offset */
 #publications,
+#education,
 #photos {
     scroll-margin-top: 3.5rem;
 }
@@ -162,7 +163,8 @@ a:hover {
 }
 
 #news .section-header,
-#publications .section-header {
+#publications .section-header,
+#education .section-header {
     max-width: 760px;
     margin-left: auto;
     margin-right: auto;
@@ -170,6 +172,10 @@ a:hover {
 
 .section-title {
     margin: 0;
+}
+
+#education .section-title {
+    font-size: 2.2rem;
 }
 
 /* News grid */
@@ -504,31 +510,29 @@ a:hover {
 /* Education */
 .education-grid {
     display: grid;
-    row-gap: 0.35rem;
-    margin-top: 0.5rem;
+    max-width: 760px;
+    margin: 0 auto;
+    border-top: 1px solid var(--color-border);
 }
 
 .education-row {
     display: grid;
-    grid-template-columns: 2rem 9rem 1fr;
-    align-items: start;
-}
-
-.edu-emoji {
-    color: var(--color-muted);
-    width: 1.5rem;
-    text-align: center;
+    grid-template-columns: 6rem 1fr;
+    align-items: center;
+    padding: 0.7rem 0;
+    border-bottom: 1px solid var(--color-border);
 }
 
 .edu-term {
+    font-size: 1.1rem;
     color: var(--color-muted);
     font-weight: var(--weight-medium);
     white-space: nowrap;
-    font-size: 0.9rem;
 }
 
 .edu-school {
     line-height: 150%;
+    color: var(--color-text-strong);
     white-space: normal;
     word-break: keep-all;
 }
@@ -555,6 +559,13 @@ a:hover {
         flex-direction: row;
         align-items: baseline;
         flex-wrap: wrap;
+        gap: 1rem;
+    }
+
+    #education .section-header {
+        flex-direction: row;
+        align-items: baseline;
+        flex-wrap: nowrap;
         gap: 1rem;
     }
     
