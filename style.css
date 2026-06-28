@@ -519,11 +519,15 @@ a:hover {
     display: grid;
     grid-template-columns: 6rem 1fr;
     align-items: center;
+    gap: 0.25rem 0;
     padding: 0.7rem 0;
     border-bottom: 1px solid var(--color-border);
 }
 
 .edu-term {
+    grid-column: 1;
+    grid-row: 1;
+    align-self: center;
     font-size: 1.1rem;
     color: var(--color-muted);
     font-weight: var(--weight-medium);
@@ -531,10 +535,19 @@ a:hover {
 }
 
 .edu-school {
+    grid-column: 2;
+    grid-row: 1;
     line-height: 150%;
     color: var(--color-text-strong);
     white-space: normal;
     word-break: keep-all;
+}
+
+.edu-caption {
+    grid-column: 2;
+    grid-row: 2;
+    font-size: 0.9rem;
+    line-height: 150%;
 }
 
 .edu-school .no-break {
