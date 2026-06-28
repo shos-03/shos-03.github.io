@@ -114,6 +114,7 @@ a:hover {
     max-width: 150px;
     border-radius: 100%;
     border: 5px solid var(--color-background);
+    box-shadow: var(--shadow-soft);
 }
 
 .icon::before {
