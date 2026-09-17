@@ -4,21 +4,13 @@ const SELECTORS = {
     publicationsSection: '#publications',
     publicationsList: '#publications-list',
 };
-const ABSTRACT_TOGGLE_MEDIA_QUERY = '(max-width: 768px)';
-const ABSTRACT_TOGGLE_LABELS = {
-    narrow: 'ABS',
-    wide: 'SHOW ABS',
-};
-
 document.addEventListener('DOMContentLoaded', () => {
     shuffleGrid(SELECTORS.grid);
     loadExternalContent().then(() => {
         initPublicationFilters();
         initPublicationAbstractToggles();
-        syncPublicationMetaSpacing();
         initNewsToggle();
     });
-    window.addEventListener('resize', syncPublicationMetaSpacing);
 });
 
 function shuffleGrid(selector) {
@@ -124,20 +116,11 @@ function initPublicationAbstractToggles() {
     const publicationsList = document.querySelector(SELECTORS.publicationsList);
     if (!publicationsList) return;
 
-    const mediaQuery = window.matchMedia(ABSTRACT_TOGGLE_MEDIA_QUERY);
-    const getLabel = () => (mediaQuery.matches ? ABSTRACT_TOGGLE_LABELS.narrow : ABSTRACT_TOGGLE_LABELS.wide);
-    const updateLabels = () => {
-        const label = getLabel();
-        publicationsList.querySelectorAll('.abstract-toggle').forEach(toggle => {
-            toggle.textContent = label;
-        });
-    };
-
     publicationsList.querySelectorAll('.publication-item').forEach(item => {
         const button = item.querySelector('.abstract-toggle');
         const abstract = item.querySelector('.publication-abstract');
         if (!button || !abstract) return;
-        button.textContent = getLabel();
+        button.textContent = 'SHOW ABS';
         button.setAttribute('aria-expanded', 'false');
         button.classList.add('inactive');
         abstract.classList.add('is-hidden');
@@ -153,30 +136,12 @@ function initPublicationAbstractToggles() {
 
         const wasHidden = abstract.classList.contains('is-hidden');
         abstract.classList.toggle('is-hidden');
-        button.textContent = getLabel();
+        button.textContent = wasHidden ? 'HIDE ABS' : 'SHOW ABS';
         button.classList.toggle('active', wasHidden);
         button.classList.toggle('inactive', !wasHidden);
         button.setAttribute('aria-expanded', String(wasHidden));
     });
 
-    if (typeof mediaQuery.addEventListener === 'function') {
-        mediaQuery.addEventListener('change', updateLabels);
-    } else if (typeof mediaQuery.addListener === 'function') {
-        mediaQuery.addListener(updateLabels);
-    }
-}
-
-function syncPublicationMetaSpacing() {
-    const publicationsList = document.querySelector(SELECTORS.publicationsList);
-    if (!publicationsList) return;
-
-    publicationsList.querySelectorAll('.publication-meta').forEach(meta => {
-        const actions = meta.querySelector('.publication-meta-actions');
-        if (!actions) return;
-        const spacing = 8;
-        const width = actions.offsetWidth + spacing;
-        meta.style.setProperty('--meta-actions-width', `${width}px`);
-    });
 }
 
 function initNewsToggle() {
@@ -186,7 +151,7 @@ function initNewsToggle() {
     const newsItems = Array.from(newsSection.querySelectorAll('.news-grid'));
     const toggleButton = newsSection.querySelector('.filter-button');
     const visibleCount = 2;
-    const labelText = 'SHOW ALL';
+    const labelText = 'Show all';
 
     if (!toggleButton || newsItems.length <= visibleCount) {
         if (toggleButton) toggleButton.classList.add('is-hidden');
@@ -211,7 +176,7 @@ function initNewsToggle() {
         toggleButton.classList.toggle('active', showAll);
         toggleButton.classList.toggle('inactive', !showAll);
         toggleButton.setAttribute('aria-pressed', String(showAll));
-        toggleButton.textContent = labelText;
+        toggleButton.textContent = showAll ? 'Show less' : labelText;
         updateNewsVisibility();
     });
 }
