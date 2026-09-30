@@ -6,10 +6,12 @@ const SELECTORS = {
 };
 document.addEventListener('DOMContentLoaded', () => {
     shuffleGrid(SELECTORS.grid);
+    applyTextTypography(document.querySelector('main'));
     loadExternalContent().then(() => {
         initPublicationFilters();
         initPublicationAbstractToggles();
         initNewsToggle();
+        applyTextTypography(document.querySelector('main'));
     });
 });
 
@@ -60,6 +62,7 @@ function initPublicationFilters() {
     const setButtonLabel = (button, defaultLabel, value) => {
         if (!button) return;
         button.textContent = value === 'all' ? defaultLabel : value;
+        applyTextTypography(button);
         button.classList.toggle('all', value === 'all');
     };
 
@@ -121,6 +124,7 @@ function initPublicationAbstractToggles() {
         const abstract = item.querySelector('.publication-abstract');
         if (!button || !abstract) return;
         button.textContent = 'SHOW ABS';
+        applyTextTypography(button);
         button.setAttribute('aria-expanded', 'false');
         button.classList.add('inactive');
         abstract.classList.add('is-hidden');
@@ -137,6 +141,7 @@ function initPublicationAbstractToggles() {
         const wasHidden = abstract.classList.contains('is-hidden');
         abstract.classList.toggle('is-hidden');
         button.textContent = wasHidden ? 'HIDE ABS' : 'SHOW ABS';
+        applyTextTypography(button);
         button.classList.toggle('active', wasHidden);
         button.classList.toggle('inactive', !wasHidden);
         button.setAttribute('aria-expanded', String(wasHidden));
@@ -163,6 +168,7 @@ function initNewsToggle() {
     let showAll = false;
     toggleButton.classList.add('inactive');
     toggleButton.textContent = labelText;
+    applyTextTypography(toggleButton);
     toggleButton.setAttribute('aria-pressed', 'false');
 
     const updateNewsVisibility = () => {
@@ -177,6 +183,7 @@ function initNewsToggle() {
         toggleButton.classList.toggle('inactive', !showAll);
         toggleButton.setAttribute('aria-pressed', String(showAll));
         toggleButton.textContent = showAll ? 'Show less' : labelText;
+        applyTextTypography(toggleButton);
         updateNewsVisibility();
     });
 }
@@ -188,10 +195,6 @@ function loadExternalContent() {
     ];
 
     return Promise.all(loadTargets.map(({ selector, url }) => loadHtmlInto(selector, url)))
-        .then(() => {
-            applyLangEnToAlnum(document.querySelector(SELECTORS.newsSection));
-            applyLangEnToAlnum(document.querySelector(SELECTORS.publicationsSection));
-        })
         .catch(error => {
             console.warn('Failed to load external content:', error);
         });
@@ -211,20 +214,20 @@ function loadHtmlInto(selector, url) {
         });
 }
 
-function applyLangEnToAlnum(root) {
+function applyTextTypography(root) {
     if (!root) return;
 
-    const blockedTags = new Set(['SCRIPT', 'STYLE', 'CODE', 'PRE', 'SVG']);
-    const englishPattern = /[A-Za-z0-9]+(?:[A-Za-z0-9 .,/()&+:-]*[A-Za-z0-9])?/g;
-    const englishTest = /[A-Za-z0-9]+(?:[A-Za-z0-9 .,/()&+:-]*[A-Za-z0-9])?/;
+    const textPattern = /，|[A-Za-z0-9]+(?:[A-Za-z0-9 .,/()&+:-]*[A-Za-z0-9])?/g;
+    const textTest = /[，A-Za-z0-9]/;
 
     const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
         acceptNode(node) {
             const parent = node.parentElement;
             if (!parent) return NodeFilter.FILTER_REJECT;
-            if (blockedTags.has(parent.tagName)) return NodeFilter.FILTER_REJECT;
-            if (hasLangEnAncestor(parent, root)) return NodeFilter.FILTER_REJECT;
-            if (!node.nodeValue || !englishTest.test(node.nodeValue)) return NodeFilter.FILTER_REJECT;
+            if (parent.closest('script, style, code, pre, svg, textarea, .latin-text, .punctuation-comma')) {
+                return NodeFilter.FILTER_REJECT;
+            }
+            if (!node.nodeValue || !textTest.test(node.nodeValue)) return NodeFilter.FILTER_REJECT;
             return NodeFilter.FILTER_ACCEPT;
         },
     });
@@ -234,19 +237,10 @@ function applyLangEnToAlnum(root) {
         nodes.push(walker.currentNode);
     }
 
-    nodes.forEach(node => wrapEnglishText(node, englishPattern));
+    nodes.forEach(node => wrapTypographyText(node, textPattern));
 }
 
-function hasLangEnAncestor(element, root) {
-    let current = element;
-    while (current && current !== root) {
-        if (current.getAttribute('lang') === 'en') return true;
-        current = current.parentElement;
-    }
-    return false;
-}
-
-function wrapEnglishText(node, pattern) {
+function wrapTypographyText(node, pattern) {
     const text = node.nodeValue;
     if (!text) return;
 
@@ -265,7 +259,7 @@ function wrapEnglishText(node, pattern) {
         }
 
         const span = document.createElement('span');
-        span.setAttribute('lang', 'en');
+        span.className = matchText === '，' ? 'punctuation-comma' : 'latin-text';
         span.textContent = matchText;
         fragments.appendChild(span);
 

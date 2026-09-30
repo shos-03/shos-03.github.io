@@ -1,12 +1,17 @@
 /* Base */
 :root {
     --color-primary: #33a6bb;
+    --color-title: #2f9aac;
+    --color-link: #4eafc0;
     --color-text: #777;
     --color-text-strong: #111;
     --color-muted: #aaa;
     --color-border: rgba(51, 166, 187, 0.16);
     --color-background: #fff;
     --font-base: futura-pt, source-han-sans-japanese, sans-serif;
+    /* Adobe Fonts: M Plus 1p Regular (400) and Medium (500). */
+    --font-comma: m-plus-1p, sans-serif;
+    --latin-font-scale: 1.1;
     --weight-light: 400;
     --weight-medium: 500;
     --radius-pill: 999px;
@@ -60,11 +65,18 @@ body {
     font-size: 2rem;
     line-height: 1.25;
     font-weight: var(--weight-light);
-    color: var(--color-primary);
+    color: var(--color-title);
 }
 
-:lang(en) {
-    hyphens: auto;
+/* Scale text runs only, so nested links and emphasis never compound it. */
+.latin-text {
+    font-size: calc(1em * var(--latin-font-scale));
+    line-height: 1;
+}
+
+/* Only U+FF0C uses this face; keep the surrounding size and weight. */
+.punctuation-comma {
+    font-family: var(--font-comma);
 }
 
 b {
@@ -80,16 +92,16 @@ u {
 a {
     text-decoration: none;
     text-underline-offset: 0.2rem;
-    color: var(--color-primary);
+    color: var(--color-link);
 }
 
 a:visited {
-    color: var(--color-primary);
+    color: var(--color-link);
 }
 
 a:hover {
-    color: var(--color-primary);
-    text-decoration: underline var(--color-primary);
+    color: var(--color-link);
+    text-decoration: underline var(--color-link);
 }
 
 /* Anchor offset */
@@ -158,10 +170,14 @@ a:hover {
     color: var(--color-text-strong);
 }
 
+.vision-box,
+.publication-abstract {
+    padding: 0.5rem 1.5rem;
+    border-left: 3px solid rgba(51, 166, 187, 0.38);
+}
+
 .vision-box {
     margin-top: 2.4rem;
-    padding: 1.1rem 1.4rem;
-    border-left: 3px solid rgba(51, 166, 187, 0.38);
 }
 
 .vision-title {
@@ -169,7 +185,7 @@ a:hover {
     font-size: 1.2rem;
     line-height: 1.4;
     font-weight: var(--weight-medium);
-    color: #477889;
+    color: var(--color-title);
 }
 
 .vision-box p {
@@ -396,8 +412,6 @@ a:hover {
     grid-column: 2;
     grid-row: 3;
     margin-top: 0.4rem;
-    padding: 0.3rem 0.6rem;
-    border-left: 2px solid var(--color-border);
 }
 
 /* Misc */
