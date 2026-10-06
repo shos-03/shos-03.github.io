@@ -238,6 +238,81 @@ function applyTextTypography(root) {
     }
 
     nodes.forEach(node => wrapTypographyText(node, textPattern));
+    applyPunctuationFallback(root);
+}
+
+// Approximate contextual CJK spacing where the native CSS property is absent.
+// Keep ordinary inline spans so the browser retains Japanese line breaking.
+function applyPunctuationFallback(root) {
+    if (window.CSS && CSS.supports('text-spacing-trim', 'trim-start')) return;
+
+    const opening = '（［｛〈《「『【〔〖〘〚';
+    const closing = '）］｝〉》」』】〕〗〙〛、。，．';
+    const middle = '・：；';
+    const changes = new Map();
+    let flow = [];
+
+    const flush = () => {
+        flow.forEach(({ node, offset, char }, index) => {
+            const previous = flow[index - 1]?.char;
+            const next = flow[index + 1]?.char;
+            let trim = '';
+            if (opening.includes(char) && (!previous || (opening + closing + middle + '　').includes(previous))) {
+                trim = 'punctuation-trim-start';
+            } else if (closing.includes(char) && next && (closing + middle + '　').includes(next)) {
+                trim = 'punctuation-trim-end';
+            }
+            const existing = node.parentElement.closest('.punctuation-trim');
+            if (existing) {
+                existing.classList.remove('punctuation-trim-start', 'punctuation-trim-end');
+                if (trim) existing.classList.add(trim);
+            } else if (trim) {
+                if (!changes.has(node)) changes.set(node, []);
+                changes.get(node).push({ offset, trim });
+            }
+        });
+        flow = [];
+    };
+
+    const visit = node => {
+        if (node.nodeType === Node.TEXT_NODE) {
+            // Ignore indentation before the first visible character of a block.
+            for (let offset = 0; offset < node.nodeValue.length; offset++) {
+                const char = node.nodeValue[offset];
+                if (!flow.length && /\s/.test(char)) continue;
+                flow.push({ node, offset, char });
+            }
+            return;
+        }
+        if (node.nodeType !== Node.ELEMENT_NODE) return;
+        if (node.matches('script, style, code, pre, svg, textarea, img, br, hr, input, select')) {
+            flush();
+            return;
+        }
+        const display = getComputedStyle(node).display;
+        const boundary = node !== root && display !== 'inline' && display !== 'contents';
+        if (boundary) flush();
+        Array.from(node.childNodes).forEach(visit);
+        if (boundary) flush();
+    };
+
+    visit(root);
+    flush();
+    changes.forEach((marks, node) => {
+        const fragment = document.createDocumentFragment();
+        const text = node.nodeValue;
+        let start = 0;
+        marks.forEach(({ offset, trim }) => {
+            fragment.appendChild(document.createTextNode(text.slice(start, offset)));
+            const span = document.createElement('span');
+            span.className = `punctuation-trim ${trim}`;
+            span.textContent = text[offset];
+            fragment.appendChild(span);
+            start = offset + 1;
+        });
+        fragment.appendChild(document.createTextNode(text.slice(start)));
+        node.parentNode.replaceChild(fragment, node);
+    });
 }
 
 function wrapTypographyText(node, pattern) {

@@ -36,6 +36,10 @@ html {
     font-weight: var(--weight-light);
     font-style: normal;
     text-align: start;
+    /* Trim adjacent CJK punctuation and opening brackets at line starts. */
+    text-spacing-trim: trim-start;
+    /* Use strict Japanese line-breaking rules for punctuation and small kana. */
+    line-break: strict;
     color: var(--color-text);
     background: var(--color-background);
 }
@@ -77,6 +81,17 @@ body {
 /* Only U+FF0C uses this face; keep the surrounding size and weight. */
 .punctuation-comma {
     font-family: var(--font-comma);
+}
+
+/* Contextual half-em trimming for browsers without text-spacing-trim. */
+@supports not (text-spacing-trim: trim-start) {
+    .punctuation-trim-start {
+        margin-inline-start: -0.5em;
+    }
+
+    .punctuation-trim-end {
+        margin-inline-end: -0.5em;
+    }
 }
 
 b {
